@@ -34,7 +34,7 @@ module.exports = {
     bio: '27歳のフリーランスエンジニア。SI企業1年, Webベンチャー企業2年で上流から下流のリードエンジニアを経て独立。 エンジニアらしく性格は温和。プロジェクトチームに心理的安全性を求める。最近はWebアプリ案件でWebflux、Spring Gatewayなどで実装。FWバンザイ。他にもWebsocketや文字数。',
     contacts: {
       email: 'rrrtcdish2@gmail.com',
-      facebook: '#',
+      facebook: 'yoshiki.ohashi0428',
       telegram: '',
       twitter: 'yoshiki__0428',
       github: 'yoshiki-0428',
