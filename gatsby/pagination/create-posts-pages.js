@@ -13,9 +13,16 @@ module.exports = async (graphql, actions) => {
       ) { totalCount }
     }
   `);
+  const result2 = await graphql(`
+  {
+    allMicrocmsBlog {
+    totalCount
+    }
+  }
+`);
 
   const { postsPerPage } = siteConfig;
-  const numPages = Math.ceil(result.data.allMarkdownRemark.totalCount / postsPerPage);
+  const numPages = Math.ceil(result2.data.allMicrocmsBlog.totalCount / postsPerPage);
 
   for (let i = 0; i < numPages; i += 1) {
     createPage({

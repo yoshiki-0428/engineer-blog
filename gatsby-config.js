@@ -44,6 +44,14 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-source-microcms',
+      options: {
+        apiKey: '6510b881-62b8-4c3b-9bdb-1ab1df01a3b6',
+        serviceId: 'yoshikiohashi',
+        endpoint: 'blog',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-feed',
       options: {
         query: `

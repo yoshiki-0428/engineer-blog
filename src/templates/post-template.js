@@ -12,36 +12,40 @@ type Props = {
   }
 };
 
-const PostTemplate = ({ data }: Props) => {
+const PostTemplate = ({ data }) => {
   const { title: siteTitle, subtitle: siteSubtitle } = useSiteMetadata();
-  const { frontmatter } = data.markdownRemark;
-  const { title: postTitle, description: postDescription, socialImage } = frontmatter;
-  const metaDescription = postDescription !== null ? postDescription : siteSubtitle;
+  // const { frontmatter } = data.markdownRemark;
+  // const { title: postTitle, description: postDescription, socialImage } = frontmatter;
+  // const metaDescription = postDescription !== null ? postDescription : siteSubtitle;
+  const blog = data.microcmsBlog;
+  console.log(blog)
 
   return (
-    <Layout title={`${postTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
-      <Post post={data.markdownRemark} />
+    <Layout title={`${blog.title} - ${siteTitle}`} description={'1'} >
+      <Post post={blog} />
     </Layout>
   );
 };
 
 export const query = graphql`
   query PostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      html
-      fields {
-        slug
-        tagSlugs
+      microcmsBlog(slug: {eq: $slug}) {
+          blogId
+          category {
+              category
+          }
+          date
+          draft
+          slug
+          template
+          title
+          updatedAt
+          tags {
+              tag
+              slug
+          }
+          content
       }
-      frontmatter {
-        date
-        description
-        tags
-        title
-        socialImage
-      }
-    }
   }
 `;
 

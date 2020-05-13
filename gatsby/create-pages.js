@@ -27,6 +27,48 @@ const createPages = async ({ graphql, actions }) => {
     component: path.resolve('./src/templates/categories-list-template.js')
   });
 
+  const microCmsResult = await graphql(`
+    {
+      allMicrocmsBlog {
+        edges {
+          node {
+            blogId
+            category {
+              category
+            }
+            date
+            draft
+            slug
+            template
+            title
+            updatedAt
+            tags {
+              tag
+            }
+            content
+          }
+        }
+      }
+    }
+  `);
+
+  const edges2 = microCmsResult.data.allMicrocmsBlog.edges;
+  _.each(edges2, (edge) => {
+    console.log(edge);
+    if (_.get(edge, 'node.template') === 'page') {
+      createPage({
+        path: edge.node.slug,
+        component: path.resolve('./src/templates/page-template.js'),
+        context: { slug: edge.node.slug }
+      });
+    } else if (_.get(edge, 'node.template') === 'post') {
+      createPage({
+        path: edge.node.slug,
+        component: path.resolve('./src/templates/post-template.js'),
+        context: { slug: edge.node.slug }
+      });
+    }
+  });
   // Posts and pages from markdown
   const result = await graphql(`
     {

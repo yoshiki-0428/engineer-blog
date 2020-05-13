@@ -10,7 +10,7 @@ import { useSiteMetadata } from '../hooks';
 import type { PageContext, AllMarkdownRemark } from '../types';
 
 type Props = {
-  data: AllMarkdownRemark,
+  data: any,
   pageContext: PageContext
 };
 
@@ -26,7 +26,7 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
   } = pageContext;
 
 
-  const { edges } = data.allMarkdownRemark;
+  const { edges } = data.allMicrocmsBlog;
   const pageTitle = currentPage > 0 ? `Posts - Page ${currentPage} - ${siteTitle}` : siteTitle;
 
   return (
@@ -47,27 +47,30 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
 
 export const query = graphql`
   query IndexTemplate($postsLimit: Int!, $postsOffset: Int!) {
-    allMarkdownRemark(
-        limit: $postsLimit,
-        skip: $postsOffset,
-        filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true } } },
-        sort: { order: DESC, fields: [frontmatter___date] }
-      ){
-      edges {
-        node {
-          fields {
-            slug
-            categorySlug
+      allMicrocmsBlog(limit: $postsLimit, skip: $postsOffset, 
+          filter: {template: {eq: "post"}}, 
+          sort: {order: DESC, fields: date}) {
+          totalCount
+          edges {
+              node {
+                  blogId
+                  category {
+                      category
+                  }
+                  content
+                  date
+                  draft
+                  slug
+                  tags {
+                      tag
+                      slug
+                  }
+                  template
+                  title
+                  updatedAt
+              }
           }
-          frontmatter {
-            title
-            date
-            category
-            description
-          }
-        }
       }
-    }
   }
 `;
 

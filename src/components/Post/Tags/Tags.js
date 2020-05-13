@@ -13,7 +13,7 @@ const Tags = ({ tags, tagSlugs }: Props) => (
     <ul className={styles['tags__list']}>
       {tagSlugs && tagSlugs.map((slug, i) => (
         <li className={styles['tags__list-item']} key={tags[i]}>
-          <Link to={slug} className={styles['tags__list-item-link']}>
+          <Link to={'/tags/' + slug} className={styles['tags__list-item-link']}>
             {tags[i]}
           </Link>
         </li>

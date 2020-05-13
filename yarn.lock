@@ -1303,7 +1303,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.9.2":
+"@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
   version "7.9.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.6.tgz#a9102eb5cadedf3f31d08a9ecf294af7827ea29f"
   integrity sha512-64AF1xY3OAkFHqOb9s4jpgk1Mm5vDZ4L3acHvAml+53nO1XbXLuDodsVpO4OIUsmemlUHMxNdYMNJmsvOwLrvQ==
@@ -1634,14 +1634,29 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.0.0.tgz#9f05469c88cb2fd3dcd624776b54ee95c312126a"
 
+"@hapi/address@^2.1.2":
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
+  integrity sha512-QD1PhQk+s31P1ixsX0H0Suoupp3VMXzIVMSwobR3F3MSUO2YCV0B7xqLcUw/Bh8yuvd3LhpyqLQWTNcRmp6IdQ==
+
 "@hapi/bourne@1.x.x":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@hapi/bourne/-/bourne-1.3.2.tgz#0a7095adea067243ce3283e1b56b8a8f453b242a"
   integrity sha512-1dVNHT76Uu5N3eJNTYcvxee+jzX4Z9lfciqRRHCU27ihbUcYi+iSc2iml5Ke1LXe1SyJCLA0+14Jh4tXJgOppA==
 
+"@hapi/formula@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@hapi/formula/-/formula-1.2.0.tgz#994649c7fea1a90b91a0a1e6d983523f680e10cd"
+  integrity sha512-UFbtbGPjstz0eWHb+ga/GM3Z9EzqKXFWIbSOFURU0A/Gku0Bky4bCk9/h//K2Xr3IrCfjFNhMm4jyZ5dbCewGA==
+
 "@hapi/hoek@8.x.x":
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-8.0.2.tgz#f63a5ff00e891a4e7aa98f11119f9515c6672032"
+
+"@hapi/hoek@^8.2.4", "@hapi/hoek@^8.3.0":
+  version "8.5.1"
+  resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-8.5.1.tgz#fde96064ca446dec8c55a8c2f130957b070c6e06"
+  integrity sha512-yN7kbciD87WzLGc5539Tn0sApjyiGHAJgKvG9W8C7O+6c7qmoQMfVs0W4bX17eqz6C78QJqqFrtgdK5EWf6Qow==
 
 "@hapi/joi@^15.0.0", "@hapi/joi@^15.1.1":
   version "15.1.1"
@@ -1653,11 +1668,34 @@
     "@hapi/hoek" "8.x.x"
     "@hapi/topo" "3.x.x"
 
+"@hapi/joi@^16.1.7":
+  version "16.1.8"
+  resolved "https://registry.yarnpkg.com/@hapi/joi/-/joi-16.1.8.tgz#84c1f126269489871ad4e2decc786e0adef06839"
+  integrity sha512-wAsVvTPe+FwSrsAurNt5vkg3zo+TblvC5Bb1zMVK6SJzZqw9UrJnexxR+76cpePmtUZKHAPxcQ2Bf7oVHyahhg==
+  dependencies:
+    "@hapi/address" "^2.1.2"
+    "@hapi/formula" "^1.2.0"
+    "@hapi/hoek" "^8.2.4"
+    "@hapi/pinpoint" "^1.0.2"
+    "@hapi/topo" "^3.1.3"
+
+"@hapi/pinpoint@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@hapi/pinpoint/-/pinpoint-1.0.2.tgz#025b7a36dbbf4d35bf1acd071c26b20ef41e0d13"
+  integrity sha512-dtXC/WkZBfC5vxscazuiJ6iq4j9oNx1SHknmIr8hofarpKUZKmlUVYVIhNVzIEgK5Wrc4GMHL5lZtt1uS2flmQ==
+
 "@hapi/topo@3.x.x":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@hapi/topo/-/topo-3.1.2.tgz#57cc1317be1a8c5f47c124f9b0e3c49cd78424d2"
   dependencies:
     "@hapi/hoek" "8.x.x"
+
+"@hapi/topo@^3.1.3":
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/@hapi/topo/-/topo-3.1.6.tgz#68d935fa3eae7fdd5ab0d7f953f3205d8b2bfc29"
+  integrity sha512-tAag0jEcjwH+P2quUfipd7liWCNX2F8NvYjQp2wtInsZxnMlypdw0FtAOLxtvvkO+GSRRbmNi8m/5y42PQJYCQ==
+  dependencies:
+    "@hapi/hoek" "^8.3.0"
 
 "@iarna/toml@2.2.3":
   version "2.2.3"
@@ -7642,6 +7680,15 @@ gatsby-core-utils@^1.1.1:
     configstore "^5.0.1"
     node-object-hash "^2.0.0"
 
+gatsby-core-utils@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.2.1.tgz#9d5e89d0cf7b9e5d7d77a9dcb47071684f68ffd5"
+  integrity sha512-uyXgjvKdzfJ0yB8oTYmBjMUqM0AACx7aA8Ioubn6k/51C4tE5+LzrG/iG42di2UaTIbcBj6vcwrvRosNKWeeBQ==
+  dependencies:
+    ci-info "2.0.0"
+    configstore "^5.0.1"
+    node-object-hash "^2.0.0"
+
 gatsby-graphiql-explorer@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/gatsby-graphiql-explorer/-/gatsby-graphiql-explorer-0.3.1.tgz#ea38430e1b748c681be0e17e85b9ead8ad51fdeb"
@@ -7960,6 +8007,15 @@ gatsby-source-filesystem@^2.2.2:
     valid-url "^1.0.9"
     xstate "^4.8.0"
 
+gatsby-source-microcms@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-source-microcms/-/gatsby-source-microcms-0.1.0.tgz#65b14ad33facedbb4e5654b0ff76a1564a52c224"
+  integrity sha512-ycJMVSPqwG1wQBliTyO8z52hdDp/pRIv55yLz1mLjHoMkCD8EMcI/UBjOhT0NU1DeNbdcKpMb8IoCgIo84hLaA==
+  dependencies:
+    "@hapi/joi" "^16.1.7"
+    camelcase "^5.3.1"
+    node-fetch "^2.6.0"
+
 gatsby-telemetry@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/gatsby-telemetry/-/gatsby-telemetry-1.2.3.tgz#0b38068bbc85a597afb7ee407fb0240997cec6ef"
@@ -7983,14 +8039,14 @@ gatsby-telemetry@^1.2.3:
     stack-utils "1.0.2"
     uuid "3.4.0"
 
-gatsby-transformer-remark@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.7.1.tgz#986871c3ca9a1b7d1c609e8f378a68d808827770"
-  integrity sha512-9geE8itjePDvaa0uWmyRgi2emPt9ut420YyjaNJ1/4eZw9Yj8zAuCdancw7j1buhL0UAxgQ2YseO6+MWTHEoMw==
+gatsby-transformer-remark@^2.8.7:
+  version "2.8.7"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.8.7.tgz#2b81d8a9672f91673ba890896459a0515cae5925"
+  integrity sha512-AaBJyQipTWFt28cmZEcrTctGBw86gbCidhyamTXpOfPQago3nX2NjmSfdEhUr5HAZwflfy/GIQhGTzo5BZ556w==
   dependencies:
-    "@babel/runtime" "^7.8.7"
+    "@babel/runtime" "^7.9.6"
     bluebird "^3.7.2"
-    gatsby-core-utils "^1.1.1"
+    gatsby-core-utils "^1.2.1"
     gray-matter "^4.0.2"
     hast-util-raw "^4.0.0"
     hast-util-to-html "^4.0.1"
@@ -8003,7 +8059,7 @@ gatsby-transformer-remark@^2.7.1:
     remark-retext "^3.1.3"
     remark-stringify "6.0.4"
     retext-english "^3.0.4"
-    sanitize-html "^1.22.1"
+    sanitize-html "^1.23.0"
     underscore.string "^3.3.5"
     unified "^6.2.0"
     unist-util-remove-position "^1.1.4"
@@ -15530,10 +15586,10 @@ sanitize-filename@^1.6.1:
   dependencies:
     truncate-utf8-bytes "^1.0.0"
 
-sanitize-html@^1.22.1:
-  version "1.22.1"
-  resolved "https://registry.yarnpkg.com/sanitize-html/-/sanitize-html-1.22.1.tgz#5b36c92ab27917ddd2775396815c2bc1a6268310"
-  integrity sha512-++IMC00KfMQc45UWZJlhWOlS9eMrME38sFG9GXfR+k6oBo9JXSYQgTOZCl9j3v/smFTRNT9XNwz5DseFdMY+2Q==
+sanitize-html@^1.23.0:
+  version "1.23.0"
+  resolved "https://registry.yarnpkg.com/sanitize-html/-/sanitize-html-1.23.0.tgz#e7a5ce7427cd2844dae5b9961cd372e349f91fb5"
+  integrity sha512-7MgUrbZpaig6zHwuHjpNqhkiuutFPWWoFY/RmdtEnvrFKMLafzSHfFyOozVpKWytkZIUhbYu3VQ/93OmYdo3ag==
   dependencies:
     chalk "^2.4.1"
     htmlparser2 "^4.1.0"
