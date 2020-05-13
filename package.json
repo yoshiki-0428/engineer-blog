@@ -53,7 +53,7 @@
     "gatsby-plugin-offline": "^3.1.2",
     "gatsby-plugin-optimize-svgs": "^1.0.4",
     "gatsby-plugin-react-helmet": "^3.2.1",
-    "gatsby-plugin-sass": "^2.2.1",
+    "gatsby-plugin-sass": "^2.3.1",
     "gatsby-plugin-sharp": "^2.5.4",
     "gatsby-plugin-sitemap": "^2.3.1",
     "gatsby-remark-autolink-headers": "^2.2.1",
@@ -73,13 +73,15 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "netlify-cms-app": "^2.12.12",
+    "netlify-cms-media-library-uploadcare": "^0.5.5",
     "node-sass": "^4.13.1",
     "normalize-scss": "^7.0.1",
     "prismjs": "^1.20.0",
     "react": "^16.13.1",
     "react-disqus-comments": "^1.4.0",
     "react-dom": "^16.13.1",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "react-markdown": "^4.3.1"
   },
   "devDependencies": {
     "@babel/core": "7.9.0",

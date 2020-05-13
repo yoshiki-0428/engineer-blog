@@ -9,6 +9,13 @@
   @include margin-top(1);
   @include margin-bottom(2);
 
+  //&__photo {
+  //  display: inline-block;
+  //  margin-bottom: 0;
+  //  border-radius: 50%;
+  //  background-clip: padding-box
+  //}
+
   &__bio {
     &-twitter {
       display: block;

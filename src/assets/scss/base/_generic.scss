@@ -1,4 +1,4 @@
-/** 
+/**
  * Generic
  */
 html {
@@ -31,7 +31,7 @@ h6 {
 h1 {
   font-size: $typographic-base-font-size * 2.5;
   @include line-height(2);
-  @include margin-top(4);
+  @include margin-top(2);
   @include margin-bottom(1);
 }
 

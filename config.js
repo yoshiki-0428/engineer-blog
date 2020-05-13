@@ -16,17 +16,17 @@ module.exports = {
       path: '/'
     },
     {
-      label: 'Portfolio & Resume',
-      path: 'https://yoshikiohashi.dev'
-    },
-    {
       label: 'About me',
       path: '/pages/about'
     },
     {
       label: 'Contact me',
       path: '/pages/contacts'
-    }
+    },
+    // { TODO 制作物リストを作る
+    //   label: 'Portfolio & Resume =>',
+    //   path: 'https://yoshikiohashi.dev'
+    // },
   ],
   author: {
     name: 'Yoshiki Ohashi',

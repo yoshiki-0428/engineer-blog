@@ -3,12 +3,23 @@ import React from 'react';
 import { getContactHref } from '../../../utils';
 import styles from './Author.module.scss';
 import { useSiteMetadata } from '../../../hooks';
+import {Link} from "gatsby";
 
 const Author = () => {
   const { author } = useSiteMetadata();
 
   return (
     <div className={styles['author']}>
+      {/*<Link to="/">*/}
+      {/*  <img*/}
+      {/*      src={author.photo}*/}
+      {/*      className={styles['author__photo']}*/}
+      {/*      width="75"*/}
+      {/*      height="75"*/}
+      {/*      alt={author.name}*/}
+      {/*  />*/}
+      {/*</Link>*/}
+
       <p className={styles['author__bio']}>
         {author.bio}
         <a

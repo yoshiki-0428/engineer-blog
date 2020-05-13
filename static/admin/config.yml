@@ -5,6 +5,18 @@ backend:
 media_folder: "static/media"
 public_folder: "/media"
 
+media_library:
+  name: uploadcare
+  config:
+    publicKey: 012e3d35e94b8223b2fc
+    multiple: false
+    tabs: 'file camera url gphotos instagram evernote flickr'
+    effects: 'crop,rotate,mirror,flip,enhance,sharp,blur,grayscale,invert'
+    imageShrink: '800x800'
+    previewStep: true
+    clearable: true
+    locale: 'ja'
+
 # Uncomment to leverage Netlify CMS UI authoring flow
 # see: https://www.netlifycms.org/docs/configuration-options/#publish-mode
 # publish_mode: editorial_workflow
@@ -18,6 +30,7 @@ collections:
     preview_path: "posts/{{fields.slug}}"
     fields:
       - {label: "Template", name: "template", widget: "hidden", default: "post"}
+      - {label: "Social Image", name: "socialImage", widget: image }
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Slug", name: "slug", widget: "string"}
       - {label: "Draft", name: "draft", widget: "boolean", default: true}
@@ -34,6 +47,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Template", name: "template", widget: "hidden", default: "page"}
+      - {label: "Social Image", name: "socialImage", widget: image }
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Slug", name: "slug", widget: "string"}
       - {label: "Draft", name: "draft", widget: "boolean", default: true}
