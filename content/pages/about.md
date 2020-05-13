@@ -16,7 +16,9 @@ Webアプリを始めとしたあらゆるアプリを0ベースで作れます�
 
 Java, Kotlin, Vue.js, React.js, Three.js, TypeScript, Android, iOS(少し), Flutter(勉強中), Gatsby, AWS
 
-他にも細かな Skill は[こちら](https://yoshikiohashi.dev/#/story)を参照
+他にも細かな Skill は[こちら](https://yoshikiohashi.dev/#/story)
+
+GitHubなどQiitaの成果物は[こちら](https://yoshikiohashi.dev/#/post)
 
 ## Resume
 
