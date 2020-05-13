@@ -32,20 +32,8 @@ const createPages = async ({ graphql, actions }) => {
       allMicrocmsBlog {
         edges {
           node {
-            blogId
-            category {
-              category
-            }
-            date
-            draft
-            slug
             template
-            title
-            updatedAt
-            tags {
-              tag
-            }
-            content
+            slug
           }
         }
       }

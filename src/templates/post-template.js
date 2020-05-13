@@ -18,7 +18,6 @@ const PostTemplate = ({ data }) => {
   // const { title: postTitle, description: postDescription, socialImage } = frontmatter;
   // const metaDescription = postDescription !== null ? postDescription : siteSubtitle;
   const blog = data.microcmsBlog;
-  console.log(blog)
 
   return (
     <Layout title={`${blog.title} - ${siteTitle}`} description={'1'} >
@@ -32,7 +31,8 @@ export const query = graphql`
       microcmsBlog(slug: {eq: $slug}) {
           blogId
           category {
-              category
+              name
+              slug
           }
           date
           draft
@@ -41,7 +41,7 @@ export const query = graphql`
           title
           updatedAt
           tags {
-              tag
+              name
               slug
           }
           content

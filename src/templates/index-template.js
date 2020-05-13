@@ -55,14 +55,15 @@ export const query = graphql`
               node {
                   blogId
                   category {
-                      category
+                      name
+                      slug
                   }
                   content
                   date
                   draft
                   slug
                   tags {
-                      tag
+                      name
                       slug
                   }
                   template
