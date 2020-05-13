@@ -4,6 +4,7 @@ backend:
 
 media_folder: "static/media"
 public_folder: "/media"
+locale: "ja"
 
 media_library:
   name: uploadcare
