@@ -23,12 +23,12 @@ module.exports = async (graphql, actions) => {
 
   _.each(result.data.allMarkdownRemark.group, (tag) => {
     const numPages = Math.ceil(tag.totalCount / postsPerPage);
-    const tagSlug = `/tag/${_.kebabCase(tag.fieldValue)}`;
+    const tagSlug = `/tags/${_.kebabCase(tag.fieldValue)}`;
 
     for (let i = 0; i < numPages; i += 1) {
       createPage({
         path: i === 0 ? tagSlug : `${tagSlug}/page/${i}`,
-        component: path.resolve('./src/templates/tag-template.js'),
+        component: path.resolve('./src/templates/tags-list-template.js'),
         context: {
           tag: tag.fieldValue,
           currentPage: i,

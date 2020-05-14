@@ -1,13 +1,14 @@
 // @flow strict
 import React from 'react';
-import { Link } from 'gatsby';
-import kebabCase from 'lodash/kebabCase';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import Page from '../components/Page';
 import { useSiteMetadata, useTagsList } from '../hooks';
+import Tags from "../components/Tags";
+import Feed from "../components/Feed";
+import { graphql } from "gatsby";
 
-const TagsListTemplate = () => {
+const TagsListTemplate = ({ data, pageContext }) => {
   const { title, subtitle } = useSiteMetadata();
   const tags = useTagsList();
 
@@ -15,18 +16,38 @@ const TagsListTemplate = () => {
     <Layout title={`Tags - ${title}`} description={subtitle}>
       <Sidebar />
       <Page title="Tags">
-        <ul>
-          {tags.map((tag) => (
-            <li key={tag.fieldValue}>
-              <Link to={`/tag/${kebabCase(tag.fieldValue)}/`}>
-                {tag.fieldValue} ({tag.totalCount})
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <Tags tags={tags} selectedTag={pageContext.tag}/>
+        <Feed edges={data.allMarkdownRemark.edges} />
       </Page>
     </Layout>
   );
 };
 
+export const query = graphql`
+    query TagsListTemplate($tag: String!) {
+        allMarkdownRemark(
+            filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true }, tags: { glob: $tag } } },
+            sort: { order: DESC, fields: [frontmatter___date] }
+        ){
+            edges {
+                node {
+                    fields {
+                        slug
+                        categorySlug
+                    }
+                    frontmatter {
+                        title
+                        date
+                        category
+                        description
+                    }
+                    excerpt
+                }
+            }
+        }
+    }
+`;
+
 export default TagsListTemplate;
+
+

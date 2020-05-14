@@ -12,16 +12,16 @@ module.exports = {
   useKatex: false,
   menu: [
     {
-      label: 'Articles',
+      label: 'Top',
       path: '/'
+    },
+    {
+      label: 'Tags',
+      path: '/tags'
     },
     {
       label: 'About me',
       path: '/pages/about'
-    },
-    {
-      label: 'Contact me',
-      path: '/pages/contacts'
     },
     // { TODO 制作物リストを作る
     //   label: 'Portfolio & Resume =>',
