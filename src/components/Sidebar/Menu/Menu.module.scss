@@ -11,7 +11,8 @@
 
     &-item {
       padding: 0;
-      margin: 10px 0;
+      margin: 10px 10px;
+      display: inline;
 
       &-link {
         font-size: $typographic-base-font-size;
@@ -22,12 +23,10 @@
         &:hover,
         &:focus {
           color: $color-primary;
-          border-bottom: 1px solid $color-primary;
         }
 
         &--active {
-          color: $color-base;
-          border-bottom: 1px solid $color-base;
+          color: $color-primary;
         }
 
       }
