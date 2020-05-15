@@ -1,13 +1,14 @@
 // @flow strict
 import React from 'react';
-import { Link } from 'gatsby';
-import kebabCase from 'lodash/kebabCase';
+import {graphql, Link} from 'gatsby';
 import Sidebar from '../components/Sidebar';
 import Layout from '../components/Layout';
 import Page from '../components/Page';
 import { useSiteMetadata, useCategoriesList } from '../hooks';
+import Category from "../components/Category/Category";
+import Feed from "../components/Feed";
 
-const CategoriesListTemplate = () => {
+const CategoriesListTemplate = ({ data, pageContext }) => {
   const { title, subtitle } = useSiteMetadata();
   const categories = useCategoriesList();
 
@@ -15,18 +16,36 @@ const CategoriesListTemplate = () => {
     <Layout title={`Categories - ${title}`} description={subtitle}>
       <Sidebar />
       <Page title="Categories">
-        <ul>
-          {categories.map((category) => (
-            <li key={category.fieldValue}>
-              <Link to={`/category/${kebabCase(category.fieldValue)}/`}>
-                {category.fieldValue} ({category.totalCount})
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <Category category={categories} selectedCategory={pageContext.category}/>
+        <Feed edges={data.allMarkdownRemark.edges} />
       </Page>
     </Layout>
   );
 };
+
+export const query = graphql`
+    query CategoriesListTemplate($category: String!) {
+        allMarkdownRemark(
+            filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true }, category: { glob: $category } } },
+            sort: { order: DESC, fields: [frontmatter___date] }
+        ){
+            edges {
+                node {
+                    fields {
+                        slug
+                        categorySlug
+                    }
+                    frontmatter {
+                        title
+                        date
+                        category
+                        description
+                    }
+                    excerpt
+                }
+            }
+        }
+    }
+`;
 
 export default CategoriesListTemplate;

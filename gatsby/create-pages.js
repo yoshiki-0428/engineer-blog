@@ -24,8 +24,9 @@ const createPages = async ({ graphql, actions }) => {
 
   // Categories list
   createPage({
-    path: '/categories',
-    component: path.resolve('./src/templates/categories-list-template.js')
+    path: '/category',
+    component: path.resolve('./src/templates/categories-list-template.js'),
+    context: { category: "*" }
   });
 
   // Posts and pages from markdown
