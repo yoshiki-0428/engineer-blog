@@ -76,6 +76,25 @@
 
     }
 
+    &-content {
+      @include breakpoint-md {
+        display: flex;
+      }
+
+      &__img {
+        display: flex;
+        height: 200px;
+        border: solid;
+        overflow: hidden;
+        flex-shrink: 0;
+        margin: 1rem;
+
+        @include breakpoint-md {
+          width: 200px;
+        }
+      }
+    }
+
   }
 
 }
