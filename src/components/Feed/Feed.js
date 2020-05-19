@@ -4,6 +4,7 @@ import moment from 'moment';
 import { Link } from 'gatsby';
 import type { Edges } from '../../types';
 import styles from './Feed.module.scss';
+import Image from "../Image";
 
 type Props = {
   edges: Edges
@@ -23,9 +24,16 @@ const Feed = ({ edges }: Props) => (
           </span>
         </div>
         <div className={styles['feed__item-content']}>
-          <div className={styles['feed__item-content__img']}>
-            Feature Image TODO
-          </div>
+          {edge.node.frontmatter.socialImage && (
+            <Link to={edge.node.fields.slug} className={styles['feed__item-content__img']}>
+              <Image
+                  resolutions="small"
+                  lazy={true}
+                  src={edge.node.frontmatter.socialImage}
+                  alt={''}
+              />
+            </Link>
+          )}
           <div>
             <h2 className={styles['feed__item-title']}>
               <Link className={styles['feed__item-title-link']} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</Link>
