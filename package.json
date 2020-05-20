@@ -81,7 +81,8 @@
     "react-disqus-comments": "^1.4.0",
     "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1",
-    "react-markdown": "^4.3.1"
+    "react-markdown": "^4.3.1",
+    "react-share": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "7.9.0",

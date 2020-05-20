@@ -8,6 +8,7 @@ import styles from './Sidebar.module.scss';
 import {useCategoriesList, useSiteMetadata, useTagsList} from '../../hooks';
 import Tags from "../Tags";
 import Category from "../Category";
+import {ShareSns} from "../ShareSns/ShareSns";
 
 type Props = {
   isIndex?: boolean,
@@ -29,6 +30,9 @@ const Sidebar = ({ isIndex }: Props) => {
         <Category category={categories} selectedCategory={""}/>
         <h2>Tags</h2>
         <Tags tags={tags} selectedTag={""}/>
+        {typeof window !== 'undefined' && window.location.href &&
+          <ShareSns articleUrl={window.location.href} articleTitle={''} />
+        }
       </div>
     </div>
   );

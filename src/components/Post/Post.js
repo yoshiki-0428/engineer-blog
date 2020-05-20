@@ -8,6 +8,7 @@ import Meta from './Meta';
 import Tags from './Tags';
 import styles from './Post.module.scss';
 import type { Node } from '../../types';
+import {ShareSns} from "../ShareSns/ShareSns";
 
 type Props = {
   post: Node
@@ -29,6 +30,9 @@ const Post = ({ post }: Props) => {
       <div className={styles['post__footer']}>
         <Meta date={date} />
         {tags && tagSlugs && <Tags tags={tags} tagSlugs={tagSlugs} />}
+        {typeof window !== 'undefined' && window.location.href &&
+          <ShareSns articleUrl={window.location.href} articleTitle={title} />
+        }
         <Author />
       </div>
 
