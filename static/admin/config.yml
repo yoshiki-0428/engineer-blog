@@ -31,15 +31,14 @@ collections:
     preview_path: "posts/{{fields.slug}}"
     fields:
       - {label: "Template", name: "template", widget: "hidden", default: "post"}
-      - {label: "Social Image", name: "socialImage", widget: image }
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "Draft", name: "draft", widget: "boolean", default: true}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false}
       - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Description", name: "description", widget: "text"}
       - {label: "Category", name: "category", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Social Image", name: "socialImage", widget: image, required: false }
+      - {label: "Body", name: "body", widget: "markdown"}
 
   - name: "pages"
     label: "Pages"
