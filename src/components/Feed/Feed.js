@@ -24,16 +24,18 @@ const Feed = ({ edges }: Props) => (
           </span>
         </div>
         <div className={styles['feed__item-content']}>
+
           {edge.node.frontmatter.socialImage && (
             <Link to={edge.node.fields.slug} className={styles['feed__item-content__img']}>
               <Image
-                  resolutions="small"
-                  lazy={false}
-                  src={edge.node.frontmatter.socialImage}
-                  alt={''}
+                resolutions="small"
+                lazy={false}
+                src={edge.node.frontmatter.socialImage}
+                alt={''}
               />
             </Link>
           )}
+
           <div>
             <h2 className={styles['feed__item-title']}>
               <Link className={styles['feed__item-title-link']} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</Link>
