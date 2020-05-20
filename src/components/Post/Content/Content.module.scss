@@ -2,9 +2,7 @@
 @import '../../../assets/scss/mixins';
 
 .content {
-  max-width: $layout-post-single-width;
   padding: 0 15px;
-  margin: 0 auto;
 
   &__title {
     font-size: $typographic-base-font-size * 2;
@@ -18,43 +16,78 @@
     @include margin-bottom(0)
   }
 
-  &__body {
-    & figure {
-      @include margin-bottom(1);
+  &__inner {
+    display: grid;
+    grid-template-columns: 100px calc(100% - 100px - 300px) 300px;
+    max-width: 1100px;
+    margin: 0 auto;
 
-      & blockquote {
-        font-style: italic;
-        text-align: center;
-        margin-top: 0;
-        @include padding(1, 0);
+    &__toc {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+      padding: 12px;
+      margin-top: 64px;
+      max-height: 100vh;
+      overflow-y: auto;
+      position: sticky;
+      position: -webkit-sticky;
+      top: 12px;
+      will-change: transform;
+      font-size: 14px;
 
-        & p {
-          max-width: $layout-post-width;
-          font-size: $typographic-base-font-size * 1.6817;
+      ul {
+        list-style: none;
+        margin: 0;
+      }
+      p {
+        margin: 0;
+      }
+    }
+
+    &__body {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      padding: 1em;
+      max-width: 720px;
+
+      & figure {
+        @include margin-bottom(1);
+
+        & blockquote {
+          font-style: italic;
+          text-align: center;
           margin-top: 0;
-          @include margin-bottom(1);
-          @include line-height(1.5)
+          @include padding(1, 0);
+
+          & p {
+            max-width: $layout-post-width;
+            font-size: $typographic-base-font-size * 1.6817;
+            margin-top: 0;
+            @include margin-bottom(1);
+            @include line-height(1.5)
+          }
+
         }
 
       }
 
-    }
+      & a {
+        text-decoration: underline
+      }
 
-    & a {
-      text-decoration: underline
-    }
+      & * {
+        max-width: $layout-post-width;
+        margin-left: auto;
+        margin-right: auto
+      }
 
-    & * {
-      max-width: $layout-post-width;
-      margin-left: auto;
-      margin-right: auto
-    }
+      & img {
+        max-width: 100%;
+      }
 
-    & img {
-      max-width: 100%;
     }
-
   }
+
 
 }
 
@@ -69,19 +102,39 @@
       @include margin-bottom(1.5)
     }
 
-    &__body {
-      font-size: $typographic-base-font-size * 1.125;
-      @include line-height(1.125);
-      @include margin-bottom(1.125);
-
-      & p {
+    &__inner {
+      &__body {
         font-size: $typographic-base-font-size * 1.125;
         @include line-height(1.125);
-        @include margin-bottom(1.125)
+        @include margin-bottom(1.125);
+
+        & p {
+          font-size: $typographic-base-font-size * 1.125;
+          @include line-height(1.125);
+          @include margin-bottom(1.125)
+        }
       }
 
     }
-
   }
 
+}
+
+@include breakpoint-xs {
+  .content {
+    &__inner {
+      grid-template-columns: minmax(0, $layout-breakpoint-sm);
+
+      &__toc {
+        width: 0;
+        display: none;
+      }
+
+      &__body {
+        grid-column: 1;
+        grid-row: 1;
+
+      }
+    }
+  }
 }
