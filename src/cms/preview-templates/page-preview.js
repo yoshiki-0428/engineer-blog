@@ -1,6 +1,7 @@
 // @flow strict
 import React from 'react';
 import type { Entry, WidgetFor } from '../../types';
+import '../style.css';
 
 type Props = {
   entry: Entry,
@@ -14,7 +15,7 @@ const PagePreview = ({ entry, widgetFor }: Props) => {
   return (
     <div className="page">
       <h1 className="page__title">{title}</h1>
-      <div className="page__body">{ body }</div>
+      <div className="markdown-body">{ body }</div>
     </div>
   );
 };

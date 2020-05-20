@@ -1,6 +1,7 @@
 // @flow strict
 import React from 'react';
 import type { Entry, WidgetFor } from '../../types';
+import '../style.css';
 
 type Props = {
   entry: Entry,
@@ -14,7 +15,7 @@ const PostPreview = ({ entry, widgetFor }: Props) => {
   return (
     <div className="post">
       <h1 className="post__title">{title}</h1>
-      <div className="post__body">{body}</div>
+      <div className="markdown-body">{body}</div>
     </div>
   );
 };

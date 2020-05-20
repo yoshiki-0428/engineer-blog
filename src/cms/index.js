@@ -7,3 +7,4 @@ import PostPreview from './preview-templates/post-preview';
 CMS.registerPreviewTemplate('pages', PagePreview);
 CMS.registerPreviewTemplate('posts', PostPreview);
 CMS.registerMediaLibrary(uploadcare);
+CMS.registerPreviewStyle('./style.css');
