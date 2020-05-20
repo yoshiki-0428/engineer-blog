@@ -89,8 +89,8 @@
         }
 
         @include breakpoint-md {
-          width: 240px;
-          margin: auto 1rem auto 0;
+          width: 300px;
+          margin: 1rem 1rem 1rem 0;
         }
         overflow: hidden;
         flex-shrink: 0;
