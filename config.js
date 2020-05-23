@@ -1,13 +1,13 @@
 'use strict';
 
 module.exports = {
-  url: 'https://lumen.netlify.com',
+  url: 'https://tech-blog.yoshikiohashi.dev',
   pathPrefix: '/',
   title: 'Blog by yoshiki ohashi',
-  subtitle: 'TODO ',
+  subtitle: 'フリーランスWebエンジニアYoshikiOhashiのTech Blog',
   copyright: '© 2020 Yoshiki Ohashi All rights reserved.',
   disqusShortname: '',
-  postsPerPage: 4,
+  postsPerPage: 8,
   googleAnalyticsId: 'UA-157574909-3',
   useKatex: false,
   menu: [
@@ -42,7 +42,7 @@ module.exports = {
     bio: '27歳のフリーランスエンジニア。SI企業1年, Webベンチャー企業2年で上流から下流のリードエンジニアを経て独立。 エンジニアらしく性格は温和。プロジェクトチームに心理的安全性を求める。最近はWebアプリ案件で' +
         'Spring5、Spring Cloud Gatewayで実装。',
     contacts: {
-      email: 'rrrtcdish2@gmail.com',
+      email: 'rrrtcdish2+tech-blog@gmail.com',
       facebook: 'yoshiki.ohashi0428',
       telegram: '',
       twitter: 'yoshiki__0428',

@@ -20,9 +20,9 @@ const Layout = ({
   description,
   socialImage
 }: Props) => {
-  const { author, url } = useSiteMetadata();
+  const { author } = useSiteMetadata();
   const metaImage = socialImage != null ? socialImage : author.photo;
-  const metaImageUrl = url + withPrefix(metaImage);
+  const metaImageUrl = withPrefix(metaImage);
 
   return (
     <div className={styles.layout}>
