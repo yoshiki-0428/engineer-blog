@@ -20,7 +20,7 @@ const Post = ({ post }: Props) => {
   const { tags, title, date } = post.frontmatter;
 
   return (
-    <div className={styles['post']}>
+    <div className={styles['post']} style={{ gridArea: 'post'}}>
       <Link className={styles['post__home-button']} to="/">All Articles</Link>
 
       <div className={styles['post__content']}>

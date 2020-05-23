@@ -20,7 +20,7 @@ const Sidebar = ({ isIndex }: Props) => {
   const categories = useCategoriesList();
 
   return (
-    <div className={styles['sidebar']}>
+    <div className={styles.sidebar} style={{ gridArea: 'side' }}>
       <div className={styles['sidebar__inner']}>
         <Author author={author} isIndex={isIndex} />
         <Menu menu={menu} />

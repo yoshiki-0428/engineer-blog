@@ -1,0 +1,21 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.layout {
+  height: 100%;
+  display: grid;
+  min-height: 100vh;
+  grid-template:
+    "...... ...... ......" auto
+    "...... post   ......" 1fr
+    / 0.3fr minmax(40rem, 1fr) 0.3fr;
+}
+
+@include breakpoint-xs {
+  .layout {
+    display: grid;
+    grid-template:
+      "... post ..." 1fr
+      / auto minmax(20rem, 1fr) auto;
+  }
+}

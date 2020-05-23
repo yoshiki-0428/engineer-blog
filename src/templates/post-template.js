@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import Post from '../components/Post';
 import { useSiteMetadata } from '../hooks';
 import type { MarkdownRemark } from '../types';
+import styles from '../components/Layout/PostLayout.module.scss';
 
 type Props = {
   data: {
@@ -19,7 +20,7 @@ const PostTemplate = ({ data }: Props) => {
   const metaDescription = postDescription !== null ? postDescription : siteSubtitle;
 
   return (
-    <Layout title={`${postTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
+    <Layout styles={styles} title={`${postTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
       <Post post={data.markdownRemark} />
     </Layout>
   );

@@ -8,6 +8,8 @@ import Page from '../components/Page';
 import Pagination from '../components/Pagination';
 import { useSiteMetadata } from '../hooks';
 import type { PageContext, AllMarkdownRemark } from '../types';
+import Copyright from "../components/Sidebar/Copyright";
+import styles from '../components/Layout/Layout.module.scss';
 
 type Props = {
   data: AllMarkdownRemark,
@@ -16,6 +18,7 @@ type Props = {
 
 const IndexTemplate = ({ data, pageContext }: Props) => {
   const { title: siteTitle, subtitle: siteSubtitle } = useSiteMetadata();
+  const { copyright } = useSiteMetadata();
 
   const {
     currentPage,
@@ -29,7 +32,7 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
   const pageTitle = currentPage > 0 ? `Posts - Page ${currentPage} - ${siteTitle}` : siteTitle;
 
   return (
-    <Layout title={pageTitle} description={siteSubtitle}>
+    <Layout styles={styles} title={pageTitle} description={siteSubtitle}>
       <Sidebar isIndex />
       <Page>
         <Feed edges={edges} />
@@ -40,6 +43,7 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
           hasNextPage={hasNextPage}
         />
       </Page>
+      <Copyright copyright={copyright} />
     </Layout>
   );
 };

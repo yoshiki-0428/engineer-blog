@@ -6,6 +6,7 @@ import Sidebar from '../components/Sidebar';
 import Page from '../components/Page';
 import { useSiteMetadata } from '../hooks';
 import type { MarkdownRemark } from '../types';
+import styles from '../components/Layout/Layout.module.scss';
 
 type Props = {
   data: {
@@ -21,7 +22,7 @@ const PageTemplate = ({ data }: Props) => {
   const metaDescription = pageDescription !== null ? pageDescription : siteSubtitle;
 
   return (
-    <Layout title={`${pageTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
+    <Layout styles={styles} title={`${pageTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
       <Sidebar />
       <Page title={pageTitle}>
         <div dangerouslySetInnerHTML={{ __html: pageBody }} />

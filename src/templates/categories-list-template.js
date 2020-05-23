@@ -7,13 +7,14 @@ import Page from '../components/Page';
 import { useSiteMetadata, useCategoriesList } from '../hooks';
 import Category from "../components/Category/Category";
 import Feed from "../components/Feed";
+import styles from '../components/Layout/Layout.module.scss';
 
 const CategoriesListTemplate = ({ data, pageContext }) => {
   const { title, subtitle } = useSiteMetadata();
   const categories = useCategoriesList();
 
   return (
-    <Layout title={`Categories - ${title}`} description={subtitle}>
+    <Layout styles={styles} title={`Categories - ${title}`} description={subtitle}>
       <Sidebar />
       <Page title="Categories">
         <Category category={categories} selectedCategory={pageContext.category}/>

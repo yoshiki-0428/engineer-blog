@@ -7,13 +7,14 @@ import { useSiteMetadata, useTagsList } from '../hooks';
 import Tags from "../components/Tags";
 import Feed from "../components/Feed";
 import { graphql } from "gatsby";
+import styles from '../components/Layout/Layout.module.scss';
 
 const TagsListTemplate = ({ data, pageContext }) => {
   const { title, subtitle } = useSiteMetadata();
   const tags = useTagsList();
 
   return (
-    <Layout title={`Tags - ${title}`} description={subtitle}>
+    <Layout styles={styles} title={`Tags - ${title}`} description={subtitle}>
       <Sidebar />
       <Page title="Tags">
         <Tags tags={tags} selectedTag={pageContext.tag}/>

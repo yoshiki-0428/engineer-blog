@@ -4,10 +4,10 @@ import Helmet from 'react-helmet';
 import { withPrefix } from 'gatsby';
 import type { Node as ReactNode } from 'react';
 import { useSiteMetadata } from '../../hooks';
-import styles from './Layout.module.scss';
 
 type Props = {
   children: ReactNode,
+  styles: any,
   title: string,
   description?: string,
   socialImage? :string
@@ -15,6 +15,7 @@ type Props = {
 
 const Layout = ({
   children,
+  styles,
   title,
   description,
   socialImage
