@@ -8,23 +8,24 @@ import Meta from './Meta';
 import Tags from './Tags';
 import styles from './Post.module.scss';
 import type { Node } from '../../types';
-import {ShareSns} from "../ShareSns/ShareSns";
+import { ShareSns } from "../ShareSns/ShareSns";
 
 type Props = {
-  post: Node
+  post: Node,
+  gridArea: {}
 };
 
-const Post = ({ post }: Props) => {
-  const { html, tableOfContents } = post;
+const Post = ({ post, gridArea }: Props) => {
+  const { html } = post;
   const { tagSlugs, slug } = post.fields;
   const { tags, title, date } = post.frontmatter;
 
   return (
-    <div className={styles['post']} style={{ gridArea: 'post'}}>
-      <Link className={styles['post__home-button']} to="/">All Articles</Link>
+    <div className={styles['post']} style={gridArea}>
+      <Link className={styles['post__home-button']} to="/">Back</Link>
 
       <div className={styles['post__content']}>
-        <Content body={html} toc={tableOfContents} title={title} />
+        <Content body={html} title={title} />
       </div>
 
       <div className={styles['post__footer']}>

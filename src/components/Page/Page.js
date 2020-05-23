@@ -3,10 +3,11 @@ import styles from './Page.module.scss';
 
 type Props = {
   title?: string,
-  children: React.Node
+  children: React.Node,
+  gridArea: {}
 };
 
-const Page = ({ title, children }: Props) => {
+const Page = ({ title, children, gridArea }: Props) => {
   const pageRef = useRef();
 
   useEffect(() => {
@@ -14,7 +15,7 @@ const Page = ({ title, children }: Props) => {
   });
 
   return (
-    <div ref={pageRef} className={styles.page} style={{ gridArea: 'page' }}>
+    <div ref={pageRef} className={styles.page} style={gridArea}>
       <div className={styles['page__inner']}>
         { title && <h1 className={styles['page__title']}>{title}</h1>}
         <div className={styles['page__body']}>

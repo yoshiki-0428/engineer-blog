@@ -15,8 +15,8 @@ const CategoriesListTemplate = ({ data, pageContext }) => {
 
   return (
     <Layout styles={styles} title={`Categories - ${title}`} description={subtitle}>
-      <Sidebar />
-      <Page title="Categories">
+      <Sidebar gridArea={{ gridArea: 'side' }} />
+      <Page title="Categories" gridArea={{ gridArea: 'page' }}>
         <Category category={categories} selectedCategory={pageContext.category}/>
         <Feed edges={data.allMarkdownRemark.edges} />
       </Page>

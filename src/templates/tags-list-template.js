@@ -15,8 +15,8 @@ const TagsListTemplate = ({ data, pageContext }) => {
 
   return (
     <Layout styles={styles} title={`Tags - ${title}`} description={subtitle}>
-      <Sidebar />
-      <Page title="Tags">
+      <Sidebar gridArea={{ gridArea: 'side' }} />
+      <Page gridArea={{ gridArea: 'page' }} title="Tags">
         <Tags tags={tags} selectedTag={pageContext.tag}/>
         <Feed edges={data.allMarkdownRemark.edges} />
       </Page>

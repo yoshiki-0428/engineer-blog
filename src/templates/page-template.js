@@ -23,8 +23,8 @@ const PageTemplate = ({ data }: Props) => {
 
   return (
     <Layout styles={styles} title={`${pageTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
-      <Sidebar />
-      <Page title={pageTitle}>
+      <Sidebar gridArea={{ gridArea: 'side' }} />
+      <Page title={pageTitle} gridArea={{ gridArea: 'page' }}>
         <div dangerouslySetInnerHTML={{ __html: pageBody }} />
       </Page>
     </Layout>

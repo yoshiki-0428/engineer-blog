@@ -12,15 +12,16 @@ import {ShareSns} from "../ShareSns/ShareSns";
 
 type Props = {
   isIndex?: boolean,
+  gridArea: {}
 };
 
-const Sidebar = ({ isIndex }: Props) => {
+const Sidebar = ({ isIndex, gridArea }: Props) => {
   const { author, copyright, menu } = useSiteMetadata();
   const tags = useTagsList();
   const categories = useCategoriesList();
 
   return (
-    <div className={styles.sidebar} style={{ gridArea: 'side' }}>
+    <div className={styles.sidebar} style={gridArea}>
       <div className={styles['sidebar__inner']}>
         <Author author={author} isIndex={isIndex} />
         <Menu menu={menu} />

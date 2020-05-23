@@ -21,7 +21,7 @@ const PostTemplate = ({ data }: Props) => {
 
   return (
     <Layout styles={styles} title={`${postTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
-      <Post post={data.markdownRemark} />
+      <Post post={data.markdownRemark} gridArea={{ gridArea: 'post' }} />
     </Layout>
   );
 };

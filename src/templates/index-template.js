@@ -33,8 +33,8 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
 
   return (
     <Layout styles={styles} title={pageTitle} description={siteSubtitle}>
-      <Sidebar isIndex />
-      <Page>
+      <Sidebar isIndex gridArea={{ gridArea: 'side' }} />
+      <Page gridArea={{ gridArea: 'page' }}>
         <Feed edges={edges} />
         <Pagination
           prevPagePath={prevPagePath}

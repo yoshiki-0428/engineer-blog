@@ -8,7 +8,7 @@
   grid-template:
     "...... ...... ......" auto
     "...... post   ......" 1fr
-    / 0.3fr minmax(40rem, 1fr) 0.3fr;
+    / 0.3fr minmax(40rem, 0.8fr) 0.3fr;
 }
 
 @include breakpoint-xs {
