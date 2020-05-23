@@ -36,6 +36,7 @@ export type Node = {
     title: string,
     socialImage?: string
   },
+  tableOfContents: string,
   html: string,
   id: string,
   excerpt: string

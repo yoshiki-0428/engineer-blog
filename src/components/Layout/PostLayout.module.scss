@@ -1,21 +1,32 @@
 @import '../../assets/scss/variables';
 @import '../../assets/scss/mixins';
 
-.layout {
-  height: 100%;
-  display: grid;
-  min-height: 100vh;
-  grid-template:
-    "...... ...... ......" auto
-    "...... post   ......" 1fr
-    / 0.3fr minmax(40rem, 0.8fr) 0.3fr;
-}
-
 @include breakpoint-xs {
   .layout {
     display: grid;
     grid-template:
-      "... post ..." 1fr
+      "... post toc" 1fr
       / auto minmax(20rem, 1fr) auto;
+  }
+}
+
+@include breakpoint-sm {
+  .layout {
+    display: grid;
+    grid-template:
+      "... post toc" 1fr
+      / auto 40rem 200px;
+  }
+}
+
+@include breakpoint-lg {
+  .layout {
+    height: 100%;
+    display: grid;
+    min-height: 100vh;
+    grid-template:
+      "...... ...... ......" auto
+      "...... post   toc" 1fr
+      / 15rem minmax(40rem, 0.8fr) 20rem;
   }
 }

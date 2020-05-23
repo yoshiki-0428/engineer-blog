@@ -6,6 +6,7 @@ import Post from '../components/Post';
 import { useSiteMetadata } from '../hooks';
 import type { MarkdownRemark } from '../types';
 import styles from '../components/Layout/PostLayout.module.scss';
+import Toc from "../components/Toc";
 
 type Props = {
   data: {
@@ -22,6 +23,7 @@ const PostTemplate = ({ data }: Props) => {
   return (
     <Layout styles={styles} title={`${postTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
       <Post post={data.markdownRemark} gridArea={{ gridArea: 'post' }} />
+      <Toc tableOfContents={data.markdownRemark.tableOfContents} gridArea={{ gridArea: 'toc' }}/>
     </Layout>
   );
 };
