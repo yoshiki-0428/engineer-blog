@@ -3,10 +3,12 @@
  */
 
 // Colors
-$color-base: #222;
+$color-base: #FFF;
 $color-primary: #5D93FF;
 $color-secondary: #F7A046;
 
+//$color_background-base: #1b1f23;
+$color_background-base: #282828;
 $color-white: #FFF;
 $color-gray: lighten($color-base, 40%);
 $color-gray-border: lighten($color-base, 77%);

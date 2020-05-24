@@ -7,6 +7,7 @@ import Page from '../components/Page';
 import { useSiteMetadata } from '../hooks';
 import type { MarkdownRemark } from '../types';
 import styles from '../components/Layout/Layout.module.scss';
+import Divider from "../components/Divider";
 
 type Props = {
   data: {
@@ -24,6 +25,7 @@ const PageTemplate = ({ data }: Props) => {
   return (
     <Layout styles={styles} title={`${pageTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
       <Sidebar gridArea={{ gridArea: 'side' }} />
+      <Divider gridArea={{ gridArea: 'divider' }}/>
       <Page title={pageTitle} gridArea={{ gridArea: 'page' }}>
         <div dangerouslySetInnerHTML={{ __html: pageBody }} />
       </Page>

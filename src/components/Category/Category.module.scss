@@ -14,8 +14,8 @@
 
   & li a {
     text-decoration: none;
-    background: white;
-    color: inherit;
+    background: $color_background-base;
+    color: $typographic-base-font-color;
     border: 1px solid $color-gray;
     border-radius: $button-border-radius;
     -webkit-box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
@@ -36,7 +36,7 @@
     border: 1px solid $color-primary;
   }
   & li a:hover span {
-    color: #000000;
+    color: $typographic-base-font-color;
   }
 
   &--Selected {

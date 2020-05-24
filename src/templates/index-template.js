@@ -10,6 +10,7 @@ import { useSiteMetadata } from '../hooks';
 import type { PageContext, AllMarkdownRemark } from '../types';
 import Copyright from "../components/Sidebar/Copyright";
 import styles from '../components/Layout/Layout.module.scss';
+import Divider from "../components/Divider";
 
 type Props = {
   data: AllMarkdownRemark,
@@ -34,6 +35,7 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
   return (
     <Layout styles={styles} title={pageTitle} description={siteSubtitle}>
       <Sidebar isIndex gridArea={{ gridArea: 'side' }} />
+      <Divider gridArea={{ gridArea: 'divider' }}/>
       <Page gridArea={{ gridArea: 'page' }}>
         <Feed edges={edges} />
         <Pagination

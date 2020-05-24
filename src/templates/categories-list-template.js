@@ -8,6 +8,7 @@ import { useSiteMetadata, useCategoriesList } from '../hooks';
 import Category from "../components/Category/Category";
 import Feed from "../components/Feed";
 import styles from '../components/Layout/Layout.module.scss';
+import Divider from "../components/Divider";
 
 const CategoriesListTemplate = ({ data, pageContext }) => {
   const { title, subtitle } = useSiteMetadata();
@@ -16,6 +17,7 @@ const CategoriesListTemplate = ({ data, pageContext }) => {
   return (
     <Layout styles={styles} title={`Categories - ${title}`} description={subtitle}>
       <Sidebar gridArea={{ gridArea: 'side' }} />
+      <Divider gridArea={{ gridArea: 'divider' }}/>
       <Page title="Categories" gridArea={{ gridArea: 'page' }}>
         <Category category={categories} selectedCategory={pageContext.category}/>
         <Feed edges={data.allMarkdownRemark.edges} />

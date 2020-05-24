@@ -8,6 +8,7 @@ import Tags from "../components/Tags";
 import Feed from "../components/Feed";
 import { graphql } from "gatsby";
 import styles from '../components/Layout/Layout.module.scss';
+import Divider from "../components/Divider";
 
 const TagsListTemplate = ({ data, pageContext }) => {
   const { title, subtitle } = useSiteMetadata();
@@ -16,6 +17,7 @@ const TagsListTemplate = ({ data, pageContext }) => {
   return (
     <Layout styles={styles} title={`Tags - ${title}`} description={subtitle}>
       <Sidebar gridArea={{ gridArea: 'side' }} />
+      <Divider gridArea={{ gridArea: 'divider' }}/>
       <Page gridArea={{ gridArea: 'page' }} title="Tags">
         <Tags tags={tags} selectedTag={pageContext.tag}/>
         <Feed edges={data.allMarkdownRemark.edges} />

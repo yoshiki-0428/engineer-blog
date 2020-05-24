@@ -8,7 +8,7 @@
   min-height: 100vh;
   grid-template:
     "...... ...... ...... ...... ......" auto
-    "...... side   ...... page   ......" 1fr
+    "...... side   divider page   ......" 1fr
     "...... footer footer footer ......" 25px
     / auto  300px  10px   1fr    auto;
 }
