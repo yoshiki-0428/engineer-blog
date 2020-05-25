@@ -48,7 +48,7 @@ yarn add react-share
 
 ```javascript
 export const ShareSns = ({ articleUrl, articleTitle }) => (
-    (typeof articleUrl !== 'undefined') &&
+    (articleUrl !== undefined) &&
       <div className={'ShareSns'}>
         <div>
           <FacebookShareButton url={articleUrl}>
