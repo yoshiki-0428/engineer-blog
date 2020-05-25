@@ -50,34 +50,42 @@ yarn add react-share
 
 ```javascript
 export const ShareSns = ({ articleUrl, articleTitle }) => (
-    (articleUrl !== undefined) &&
-      <div className={'ShareSns'}>
-        <div>
-          <FacebookShareButton url={articleUrl}>
-            <FacebookIcon size={32} round />
-          </FacebookShareButton>
-  
-          <LineShareButton url={articleUrl}>
-            <LineIcon size={32} round />
-          </LineShareButton>
-  
-          <LinkedinShareButton url={articleUrl}>
-            <LinkedinIcon title={articleTitle} size={32} round />
-          </LinkedinShareButton>
-  
-          <TwitterShareButton title={articleTitle} via="yoshiki__0428" url={articleUrl}>
-            <TwitterIcon size={32} round />
-          </TwitterShareButton>
-        </div>
-      </div>
-```
+  <div className={'ShareSns'}>
+    <div>
+      <FacebookShareButton url={articleUrl}>
+        <FacebookIcon size={32} round />
+      </FacebookShareButton>
 
-> 共有したいURLの変数を`window.location.href`を使用する場合、中身をチェックする必要があります。
+      <LineShareButton url={articleUrl}>
+        <LineIcon size={32} round />
+      </LineShareButton>
+
+      <LinkedinShareButton url={articleUrl}>
+        <LinkedinIcon title={articleTitle} size={32} round />
+      </LinkedinShareButton>
+
+      <TwitterShareButton title={articleTitle} via="yoshiki__0428" url={articleUrl}>
+        <TwitterIcon size={32} round />
+      </TwitterShareButton>
+    </div>
+  </div>
+);
+```
 
 ### 呼び出し方
 
+ちょっと呼び出し方がもどかしいですが、Gatsby buildをするときに`window.location.href`が未定義なのでビルド時に落ちてしまいます。そのため、typeofで確認する必要があります。
+
 ```js
-<ShareSns articleUrl={window.location.href} articleTitle={'タイトル'} />
+{typeof window !== 'undefined' && window.location.href &&
+  <ShareSns articleUrl={window.location.href} articleTitle={title} />
+}
+```
+
+もしくは呼び出し前にundifinedチェックをして値が存在するか事前に確認しても良いと思います。
+
+```js
+const windowUrl = (typeof window !== 'undefined' && window.location.href) ? window : '';
 ```
 
 これで下のようなボタンが表示されるはずです。他にも色々なSNSのボタンがあるので使ってみてはいかがでしょうか。
