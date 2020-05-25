@@ -31,7 +31,9 @@ const Sidebar = ({ isIndex, gridArea }: Props) => {
         <Category category={categories} selectedCategory={""}/>
         <h2>Tags</h2>
         <Tags tags={tags} selectedTag={""}/>
-        <ShareSns articleUrl={window.location.href} articleTitle={''} />
+        {typeof window !== 'undefined' && window.location.href &&
+          <ShareSns articleUrl={window.location.href} articleTitle={''} />
+        }
       </div>
     </div>
   );

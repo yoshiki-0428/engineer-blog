@@ -10,25 +10,24 @@ import LineIcon from 'react-share/es/LineIcon'
 import "./ShareSns.css"
 
 export const ShareSns = ({ articleUrl, articleTitle }) => (
-    (articleUrl !== undefined) &&
-      <div className={'ShareSns'}>
-        <div>
-          <FacebookShareButton url={articleUrl}>
-            <FacebookIcon size={32} round />
-          </FacebookShareButton>
+  <div className={'ShareSns'}>
+    <div>
+      <FacebookShareButton url={articleUrl}>
+        <FacebookIcon size={32} round />
+      </FacebookShareButton>
 
-          <LineShareButton url={articleUrl}>
-            <LineIcon size={32} round />
-          </LineShareButton>
+      <LineShareButton url={articleUrl}>
+        <LineIcon size={32} round />
+      </LineShareButton>
 
-          <LinkedinShareButton url={articleUrl}>
-            <LinkedinIcon title={articleTitle} size={32} round />
-          </LinkedinShareButton>
+      <LinkedinShareButton url={articleUrl}>
+        <LinkedinIcon title={articleTitle} size={32} round />
+      </LinkedinShareButton>
 
-          <TwitterShareButton title={articleTitle} via="yoshiki__0428" url={articleUrl}>
-            <TwitterIcon size={32} round />
-          </TwitterShareButton>
-        </div>
-      </div>
+      <TwitterShareButton title={articleTitle} via="yoshiki__0428" url={articleUrl}>
+        <TwitterIcon size={32} round />
+      </TwitterShareButton>
+    </div>
+  </div>
 );
 
