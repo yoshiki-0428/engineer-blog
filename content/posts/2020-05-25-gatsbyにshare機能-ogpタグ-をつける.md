@@ -8,6 +8,8 @@ category: Programming
 tags:
   - Gatsby
   - CMS
+  - Twitter
+  - OGP
 socialImage: https://ucarecdn.com/4f2366fa-cfd4-4e97-9d20-c08013970579/-/preview/-/enhance/50/
 ---
 # はじめに
