@@ -31,9 +31,7 @@ const Post = ({ post, gridArea }: Props) => {
       <div className={styles['post__footer']}>
         <Meta date={date} />
         {tags && tagSlugs && <Tags tags={tags} tagSlugs={tagSlugs} />}
-        {typeof window !== 'undefined' && window.location.href &&
-          <ShareSns articleUrl={window.location.href} articleTitle={title} />
-        }
+        <ShareSns articleUrl={window.location.href} articleTitle={title} />
         <Author />
       </div>
 
