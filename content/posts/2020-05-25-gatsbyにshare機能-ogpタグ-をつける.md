@@ -1,6 +1,6 @@
 ---
 template: post
-title: GatsbyにShare機能(OGPタグ)をつける
+title: GatsbyにShare機能、OGPタグをつける
 slug: start-gatsby-blog-share
 draft: false
 date: 2020-05-25T14:46:03.023Z
@@ -17,10 +17,10 @@ socialImage: https://ucarecdn.com/4f2366fa-cfd4-4e97-9d20-c08013970579/-/preview
 この記事は[Gatsby](https://www.gatsbyjs.org/)というヘッドレスCMS技術で構成されています。今回は「エンジニア初心者でもできる」を前提に以下の構成で記事を作成していこうと思います。
 
 * [Gatsby始めるまで](https://tech-blog.yoshikiohashi.dev/posts/start-gatsby-blog/)
-* GatsbyにShare機能をつける（本記事）
-* タグ機能、カテゴリ機能をつける（別記事予定）
+* [GatsbyにShare機能、OGPタグをつける](https://tech-blog.yoshikiohashi.dev/posts/start-gatsby-blog-share/)（本記事）
+* [タグ機能、カテゴリ機能をつける（基礎編）](https://tech-blog.yoshikiohashi.dev/posts/start-gatsby-blog-add-tags)
+* タグ機能、カテゴリ機能をつける（応用編）（別記事予定）
 * TableOfContents（目次）をつける（別記事予定）
-* Metaタグをつける（TwitterのOGPなど）（別記事予定）
 * DarkModeをつける（別記事予定）
 
 # 内容
@@ -85,7 +85,7 @@ export const ShareSns = ({ articleUrl, articleTitle }) => (
 もしくは呼び出し前にundifinedチェックをして値が存在するか事前に確認しても良いと思います。
 
 ```js
-const windowUrl = (typeof window !== 'undefined' && window.location.href) ? window : '';
+const windowUrl = (typeof window !== 'undefined' && window.location.href) ? window.location.href : '';
 ```
 
 これで下のようなボタンが表示されるはずです。他にも色々なSNSのボタンがあるので使ってみてはいかがでしょうか。

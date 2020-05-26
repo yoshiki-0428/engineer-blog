@@ -28,7 +28,7 @@ const Feed = ({ edges }: Props) => (
           {edge.node.frontmatter.socialImage && (
             <Link to={edge.node.fields.slug} className={styles['feed__item-content__img']}>
               <Image
-                resolutions="small"
+                resolutions="large"
                 lazy={false}
                 src={edge.node.frontmatter.socialImage}
                 alt={''}
