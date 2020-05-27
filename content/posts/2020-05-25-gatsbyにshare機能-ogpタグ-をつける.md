@@ -19,7 +19,7 @@ socialImage: https://ucarecdn.com/4f2366fa-cfd4-4e97-9d20-c08013970579/-/preview
 * [Gatsby始めるまで](https://tech-blog.yoshikiohashi.dev/posts/start-gatsby-blog/)
 * [GatsbyにShare機能、OGPタグをつける](https://tech-blog.yoshikiohashi.dev/posts/start-gatsby-blog-share/)（本記事）
 * [タグ機能、カテゴリ機能をつける（基礎編）](https://tech-blog.yoshikiohashi.dev/posts/start-gatsby-blog-add-tags)
-* タグ機能、カテゴリ機能をつける（応用編）（別記事予定）
+* [タグ機能、カテゴリ機能をつける（応用編）](https://tech-blog.yoshikiohashi.dev/posts/start-gatsby-blog-add-tags-application)
 * TableOfContents（目次）をつける（別記事予定）
 * DarkModeをつける（別記事予定）
 

@@ -27,29 +27,38 @@ const TagsListTemplate = ({ data, pageContext }) => {
 };
 
 export const query = graphql`
-    query TagsListTemplate($tag: String!) {
-        allMarkdownRemark(
-            filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true }, tags: { glob: $tag } } },
-            sort: { order: DESC, fields: [frontmatter___date] }
-        ){
-            edges {
-                node {
-                    fields {
-                        slug
-                        categorySlug
-                    }
-                    frontmatter {
-                        title
-                        date
-                        category
-                        description
-                        socialImage
-                    }
-                    excerpt
+query TagsListTemplate($tag: String!) {
+    allMarkdownRemark(
+        filter: {
+            frontmatter: {
+                template: { eq: "post" },
+                draft: { ne: true },
+                tags: { glob: $tag } }
+        },
+        sort: { order: DESC, fields: [frontmatter___date] }
+    ){
+        group(field: frontmatter___tags) {
+            fieldValue
+            totalCount
+        }
+        edges {
+            node {
+                fields {
+                    slug
+                    categorySlug
                 }
+                frontmatter {
+                    title
+                    date
+                    category
+                    description
+                    socialImage
+                }
+                excerpt
             }
         }
     }
+}
 `;
 
 export default TagsListTemplate;
