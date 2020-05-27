@@ -32,7 +32,7 @@ socialImage: https://ucarecdn.com/1c3706e0-1090-48c1-ad74-f10e9cbce307/
 
 ## クエリー
 
-超簡単です。記事を取得しているクエリーに`tableOfContents`を付け足すだけです。エディタで結果を確認してみましょう。
+超簡単です。記事を取得しているクエリーに**tableOfContents**を付け足すだけです。エディタで結果を確認してみましょう。
 
 ```graphql
   query PostBySlug($slug: String!) {
@@ -71,7 +71,7 @@ TOCを表示するコンポーネントつくりです。
 
 からです。パーツ１つ１つの依存度を下げていきましょう。
 
-下のように`dangerouslySetInnerHTML={{ __html: tableOfContents }}`に先程取得したHTMLデータを流し込みましょう。（CSSの設定はお好みで設定してください）
+下のように**dangerouslySetInnerHTML={{ __html: tableOfContents }}**に先程取得したHTMLデータを流し込みましょう。（CSSの設定はお好みで設定してください）
 
 ```js
 const Toc = ({ tableOfContents, gridArea }: Props) => (

@@ -46,7 +46,7 @@ yarn add react-share
 
 ### ShareSns.jsのコンポーネントの作成
 
-適当なディレクトリを作成して（ここでは`ShareSns`とします）
+適当なディレクトリを作成して（ここでは**ShareSns**とします）
 
 ```javascript
 export const ShareSns = ({ articleUrl, articleTitle }) => (
@@ -74,7 +74,7 @@ export const ShareSns = ({ articleUrl, articleTitle }) => (
 
 ### 呼び出し方
 
-ちょっと呼び出し方がもどかしいですが、Gatsby buildをするときに`window.location.href`が未定義なのでビルド時に落ちてしまいます。そのため、typeofで確認する必要があります。
+ちょっと呼び出し方がもどかしいですが、Gatsby buildをするときに**window.location.href**が未定義なのでビルド時に落ちてしまいます。そのため、typeofで確認する必要があります。
 
 ```js
 {typeof window !== 'undefined' && window.location.href &&
@@ -82,7 +82,7 @@ export const ShareSns = ({ articleUrl, articleTitle }) => (
 }
 ```
 
-もしくは呼び出し前にundifinedチェックをして値が存在するか事前に確認しても良いと思います。
+もしくは呼び出し前に**undifinedチェック**をして値が存在するか事前に確認しても良いと思います。
 
 ```js
 const windowUrl = (typeof window !== 'undefined' && window.location.href) ? window.location.href : '';
@@ -103,7 +103,7 @@ yarn add react-helmet
 
 ### Metaタグ専用のコンポーネントの作成
 
-使い方は簡単です。`Helmetタグ`を作成し、そこに必要な`Metaタグ`を入力すればOKです。
+使い方は簡単です。**Helmetタグ**を作成し、そこに必要な**Metaタグ**を入力すればOKです。
 
 この例ではOGとTwitterのOGPを設定しています。呼び出し元は画像データやタイトルデータが取得できる記事画面で呼び出すと良いと思います。Templateによって設計がまちまちなので環境に合わせて適用してみてください。
 ```js
