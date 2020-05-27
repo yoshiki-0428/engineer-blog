@@ -9,6 +9,7 @@ tags:
   - Gatsby
   - CMS
   - Toc
+socialImage: https://ucarecdn.com/1c3706e0-1090-48c1-ad74-f10e9cbce307/
 ---
 # はじめに
 
