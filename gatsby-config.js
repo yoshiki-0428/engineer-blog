@@ -44,12 +44,6 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-remark-toc',
-      options: {
-        header: '目次',
-      }
-    },
-    {
       resolve: 'gatsby-plugin-feed',
       options: {
         query: `
