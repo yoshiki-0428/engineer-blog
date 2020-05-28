@@ -75,7 +75,7 @@ TOCを表示するコンポーネントつくりです。
 
 ```js
 const Toc = ({ tableOfContents, gridArea }: Props) => (
-  <div className={styles.toc} dangerouslySetInnerHTML={{ __html: tableOfContents }} style={gridArea} />
+  <div className={styles.toc} dangerouslySetInnerHTML={{ __html: tableOfContents }} />
 );
 
 export default Toc;
