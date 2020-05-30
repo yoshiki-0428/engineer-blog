@@ -2,17 +2,37 @@
  * Variables
  */
 
-// Colors
-$color-base: #FFF;
-$color-primary: #5D93FF;
-$color-secondary: #F7A046;
+:root{
+  @media (prefers-color-scheme: light) {
+    --color-base: #222;
+    --color-primary: #5D93FF;
+    --color-secondary: #F7A046;
+    --color_background-base: #FFF;
+  }
+  @media (prefers-color-scheme: dark) {
+    --color-base: #FFF;
+    --color-primary: #5D93FF;
+    --color-secondary: #F7A046;
+    --color_background-base: #282828;
+  }
+  @media (prefers-color-scheme: no-preference) {
+    --color-base: #FFF;
+    --color-primary: #5D93FF;
+    --color-secondary: #F7A046;
+    --color_background-base: #282828;
+  }
+}
 
-//$color_background-base: #1b1f23;
-$color_background-base: #282828;
+// Colors
+$color-base: var(--color-base);
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+
+$color_background-base: var(--color_background-base);
 $color-white: #FFF;
 $color-gray: #949494;
-$color-gray-border: lighten($color-base, 77%);
-$color-gray-bg: lighten($color-base, 79%);
+$color-gray-border: lighten($color-gray, 77%);
+$color-gray-bg: lighten($color-gray, 79%);
 
 // Typographic
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap');
