@@ -20,7 +20,7 @@ socialImage: https://ucarecdn.com/1c3706e0-1090-48c1-ad74-f10e9cbce307/
 * [タグ機能、カテゴリ機能をつける（基礎編）](https://tech-blog.yoshikiohashi.dev/posts/start-gatsby-blog-add-tags)
 * [タグ機能、カテゴリ機能をつける（応用編）](https://tech-blog.yoshikiohashi.dev/posts/start-gatsby-blog-add-tags-application)
 * [GatsbyにTableOfContents（目次）をつける](https://tech-blog.yoshikiohashi.dev/posts/start-gatsby-blog-tableofcontent)（本記事）
-* DarkModeをつける（別記事予定）
+* [DarkModeをつける](https://tech-blog.yoshikiohashi.dev/posts/start-gatsby-blog-darkmode)
 
 # 内容
 

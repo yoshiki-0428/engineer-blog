@@ -9,6 +9,7 @@ tags:
   - CSS
   - Gatsby
   - DarkMode
+socialImage: https://ucarecdn.com/d9ce6002-b211-4d44-a60d-c2dab5f15db6/
 ---
 # はじめに
 
