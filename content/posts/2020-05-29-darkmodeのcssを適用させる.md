@@ -1,7 +1,7 @@
 ---
 template: post
 title: DarkModeのCSSを適用させる
-slug: start-gatsby-blog-share-darkmode
+slug: start-gatsby-blog-darkmode
 draft: false
 date: 2020-05-29T21:36:43.318Z
 category: Programming
