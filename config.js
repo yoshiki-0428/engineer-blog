@@ -39,8 +39,8 @@ module.exports = {
   author: {
     name: 'Yoshiki Ohashi',
     photo: 'https://avatars3.githubusercontent.com/u/20635620?s=400&u=280a071aeba97582646be64a5b75921fff99cfdf&v=4',
-    bio: '27歳のフリーランスエンジニア。SI企業1年, Webベンチャー企業2年で上流から下流のリードエンジニアを経て独立。 エンジニアらしく性格は温和。プロジェクトチームに心理的安全性を求める。最近はWebアプリ案件で' +
-        'Spring5、Spring Cloud Gatewayで実装。',
+    bio: '2x歳の個人事業主エンジニア。SI企業1年, Webベンチャー企業2年で上流から下流の経験を経て独立しました。 エンジニアらしく性格は温和。プロジェクトチームに心理的安全性を求める。最近はWebアプリ案件で' +
+        'Spring5、Spring Cloudなどのフレームワークを使用し開発。他にもネイティブアプリ開発、Webアプリ開発もやってる',
     contacts: {
       email: 'rrrtcdish2+tech-blog@gmail.com',
       facebook: 'yoshiki.ohashi0428',
