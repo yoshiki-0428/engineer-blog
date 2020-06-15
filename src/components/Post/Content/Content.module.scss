@@ -6,6 +6,31 @@
   padding: 0 15px;
   margin: 0 auto;
 
+  /* テーブル */
+  table {
+    border: 1px solid $table-border-color;
+    width: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  th {
+    color: $typographic-base-font-color;
+    background: $color-gray;
+    padding: 5px;
+    border-bottom: 1px solid $table-border-color;
+    border-left: 1px solid $table-border-color;
+    text-align: center;
+  }
+  td {
+    padding: 5px;
+    border-bottom: 1px solid $table-border-color;
+    border-left: 1px solid $table-border-color;
+    text-align: center;
+  }
+  tr:nth-child(2n+1) {
+    background: darken($color-gray, 30%);
+  }
+
   &__title {
     font-size: $typographic-base-font-size * 2;
     max-width: $layout-post-width;

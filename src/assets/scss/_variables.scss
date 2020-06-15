@@ -29,6 +29,7 @@ $color-primary: var(--color-primary);
 $color-secondary: var(--color-secondary);
 
 $color_background-base: var(--color_background-base);
+$color-background-base-light: var(--color_background-base-light);
 $color-white: #FFF;
 $color-gray: #949494;
 $color-gray-border: lighten($color-gray, 77%);
@@ -62,3 +63,5 @@ $layout-width: 1070px;
 $layout-breakpoint-sm: 685px;
 $layout-breakpoint-md: 960px;
 $layout-breakpoint-lg: 1100px;
+
+$table-border-color: #222;
