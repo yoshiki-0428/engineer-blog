@@ -148,6 +148,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `tech-blog-yoshikiohashi`
+      }
+    },
+    {
       resolve: 'gatsby-plugin-sitemap',
       options: {
         query: `

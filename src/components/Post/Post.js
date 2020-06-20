@@ -9,6 +9,7 @@ import Tags from './Tags';
 import styles from './Post.module.scss';
 import type { Node } from '../../types';
 import { ShareSns } from "../ShareSns/ShareSns";
+import Disqus from 'gatsby-plugin-disqus';
 
 type Props = {
   post: Node,
@@ -16,7 +17,7 @@ type Props = {
 };
 
 const Post = ({ post, gridArea }: Props) => {
-  const { html } = post;
+  const { id, html } = post;
   const { tagSlugs, slug } = post.fields;
   const { tags, title, date } = post.frontmatter;
 
@@ -33,6 +34,13 @@ const Post = ({ post, gridArea }: Props) => {
         {tags && tagSlugs && <Tags tags={tags} tagSlugs={tagSlugs} />}
         {typeof window !== 'undefined' && window.location.href &&
           <ShareSns articleUrl={window.location.href} articleTitle={title} />
+        }
+        {typeof window !== 'undefined' && window.location.href &&
+          <Disqus
+              identifier={id}
+              title={title}
+              url={window.location.href}
+          />
         }
         <Author />
       </div>
