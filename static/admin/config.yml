@@ -1,0 +1,169 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: "static/media"
+public_folder: "/media"
+locale: "ja"
+
+media_library:
+  name: uploadcare
+  config:
+    # change uploadcare public key
+    publicKey: 012e3d35e94b8223b2fc
+    multiple: false
+    tabs: 'file camera url gphotos instagram evernote flickr'
+    effects: 'crop,rotate,mirror,flip,enhance,sharp,blur,grayscale,invert'
+    imageShrink: '800x800'
+    previewStep: true
+    clearable: true
+    locale: 'ja'
+
+# Uncomment to leverage Netlify CMS UI authoring flow
+# see: https://www.netlifycms.org/docs/configuration-options/#publish-mode
+# publish_mode: editorial_workflow
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "posts/{{fields.slug}}"
+    fields:
+      - {label: "Template", name: "template", widget: "hidden", default: "post"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Related Links", name: "relatedLinks", widget: "list"}
+      - {label: "Social Image", name: "socialImage", widget: image, required: false }
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template", name: "template", widget: "hidden", default: "page"}
+      - {label: "Social Image", name: "socialImage", widget: image }
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Draft", name: "draft", widget: "boolean", default: true}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: 'settings'
+    label: 'Settings'
+    delete: false # Prevent users from deleting documents in this collection
+    editor:
+      preview: false
+    files:
+      - file: 'content/settings/global.yml'
+        label: 'Global Settings'
+        name: 'global-settings'
+        fields:
+          - label: Site Config
+            hint: 'サイトに関わるURLやタイトルなどの設定ができます。'
+            name: siteConfig
+            widget: object
+            fields:
+              - { label: Path Prefix, name: pathPrefix, widget: string, required: true }
+              - { label: url, name: url, widget: string, required: true }
+              - { label: title, name: title, widget: string, required: true }
+              - { label: subtitle, name: subtitle, widget: string, required: false }
+              - { label: copyright, name: copyright, widget: string, required: false }
+              - { label: disqus Shortname, name: disqusShortname, widget: string, required: false, hint: "DisqusのShortnameを入れることで記事の下にDisqusを配置できます。" }
+              - { label: header Image, name: headerImage, widget: image, required: false, hint: "サイトトップのヘッダー画像を設定できます。未設定の場合非表示となります。" }
+              - { label: posts Per Page, name: postsPerPage, widget: number, required: true, default: 10, hint: "1ページあたりの表示記事数を表します。" }
+              - label: menu
+                name: menu
+                widget: list
+                hint: "サイトトップに専用のリンクを表示できます。"
+                required: false
+                fields:
+                  - { label: 'label', name: 'label', widget: string, default: "About me" }
+                  - { label: path, name: path, widget: string, default: "/pages/about" }
+              - label: Top Contents
+                name: topContents
+                widget: list
+                hint: "サイトトップに3つのみ手動設定した記事を表示できます"
+                required: false
+                fields:
+                  - { label: url, name: url, widget: string, hint: "/posts/hoge-hoge" }
+
+              - label: Social Media Card
+                name: socialMediaCard
+                widget: object
+                hint: "サイトのイメージ画像です。OGPリンクなどで表示されます。"
+                fields:
+                  - { label: Image, name: image, widget: image, required: false }
+
+              - label: Author
+                name: author
+                widget: object
+                hint: "著者情報を設定できます。"
+                fields:
+                  - { label: name, name: name, widget: string, required: true }
+                  - { label: photo, name: photo, widget: image, required: true }
+                  - { label: bio, name: bio, widget: string, required: true }
+                  - label: SNS Contacts
+                    name: contacts
+                    widget: object
+                    hint: "SNSのリンクを設定できます"
+                    fields:
+                      - { label: email, name: email, widget: string, required: false }
+                      - { label: facebook, name: facebook, widget: string, required: false }
+                      - { label: twitter, name: twitter, widget: string, required: false }
+                      - { label: youtube, name: youtube, widget: string, required: false }
+                      - { label: github, name: github, widget: string, required: false }
+                      - { label: gitlab, name: gitlab, widget: string, required: false }
+                      - { label: codepen, name: codepen, widget: string, required: false }
+                      - { label: rss, name: rss, widget: string, required: false, default: "/rss.xml" }
+                      - { label: vkontakte, name: vkontakte, widget: string, required: false }
+                      - { label: linkedin, name: linkedin, widget: string, required: false }
+                      - { label: instagram, name: instagram, widget: string, required: false }
+                      - { label: line, name: line, widget: string, required: false }
+                      - { label: weibo, name: weibo, widget: string, required: false }
+                      - { label: soundcloud, name: soundcloud, widget: string, required: false }
+                      - { label: telegram, name: telegram, widget: string, required: false }
+
+              - label: Popular View Setting
+                name: popularView
+                widget: object
+                hint: "よく読まれているコンテンツのランキングをGoogleAnalyticsから取得するAPI Settingです"
+                fields:
+                  - { label: google Analytics Start Date, name: googleAnalyticsStartDate, widget: string, required: true, default: "60daysAgo", hint: "集計開始日" }
+                  - { label: google Analytics End Date, name: googleAnalyticsEndDate, widget: string, required: true, default: "today", hint: "集計終了日"  }
+                  - { label: google Analytics Metrics, name: googleAnalyticsMetrics, widget: string, required: true, default: "ga:sessions", hint: "集計対象"  }
+                  - { label: google Analytics Filters Url, name: googleAnalyticsFiltersUrl, widget: string, required: true, default: "/posts/", hint: "集計するURLのプレフィックス"  }
+                  - { label: google Analytics Page Size, name: googleAnalyticsPageSize, widget: number, required: true, default: 5, hint: "集計記事数" }
+
+          - label: Site Designe
+            name: siteDesign
+            widget: object
+            hint: "サイトのカラーを手動で設定可能です。"
+            fields:
+              - { label: white, name: white, widget: string, required: true }
+              - { label: primary, name: primary, widget: string, required: true }
+              - { label: accent, name: accent, widget: string, required: true }
+              - { label: base Back, name: baseBack, widget: string, required: true }
+              - { label: base Font, name: baseFont, widget: string, required: true }
+              - { label: base Gray, name: baseGray, widget: string, required: true }
+              - { label: base Gray Light, name: baseGrayLight, widget: string, required: true }
+              - { label: rounded, name: rounded, widget: string, required: true, hint: "単位px, rem" }
+
+          - label: Site Secret
+            name: secretConfig
+            widget: object
+            hint: "Google AnalyticsやAdsense, Algolia検索などで使用されるAPIキーなどを設定する必要があります"
+            fields:
+              - { label: algolia App Id, name: algoliaAppId, widget: string, required: true }
+              - { label: algolia Search Api Key, name: algoliaSearchApiKey, widget: string, required: true }
+              - { label: algolia Index Name, name: algoliaIndexName, widget: string, required: true }
+              - { label: google Adsnse Client Id, name: googleAdsnseClientId, widget: string, required: false }
+              - { label: google Adsnse Client Slot, name: googleAdsnseClientSlot, widget: string, required: false }
+              - { label: google Analytics Id, name: googleAnalyticsId, widget: string, required: false }
+              - { label: google Analytics ViewId, name: googleAnalyticsViewId, widget: string, required: false }
