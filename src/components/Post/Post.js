@@ -1,53 +1,82 @@
-// @flow strict
 import React from 'react';
-import { Link } from 'gatsby';
-import Author from './Author';
-import Comments from './Comments';
-import Content from './Content';
-import Meta from './Meta';
-import Tags from './Tags';
-import styles from './Post.module.scss';
-import type { Node } from '../../types';
+import Tags from '../Tags';
 import { ShareSns } from "../ShareSns/ShareSns";
 import Disqus from 'gatsby-plugin-disqus';
+import {useAllMarkdownRemarkForPopularList, useSiteMetadata} from "../../hooks";
+import moment from "moment";
+import ImageWrap from "../Image/ImageWrap";
+import InstantView from "../InstantView";
+import { kebabCase } from 'lodash/string';
+import {CARD, HR, SPACER, TEXT_BASE_CENTER, TEXT_GATSBY_LINK, TITLE_H1, TITLE_H3} from "../Tailwind";
+import "twin.macro";
+import Iframely from "../Iframely";
 
-type Props = {
-  post: Node,
-  gridArea: {}
-};
-
-const Post = ({ post, gridArea }: Props) => {
+const Post = ({ post }) => {
   const { id, html } = post;
-  const { tagSlugs, slug } = post.fields;
-  const { tags, title, date } = post.frontmatter;
+  const { slug } = post.fields;
+  const { title, date, updatedDate, socialImage, category, relatedLinks } = post.frontmatter;
+  const { url, disqusShortname } = useSiteMetadata();
+  const relatedArticles = relatedLinks ? useAllMarkdownRemarkForPopularList(relatedLinks) : [];
+
+  const tags = post.frontmatter.tags.map(tag => {
+    return { fieldValue: tag }
+  });
 
   return (
-    <div className={styles['post']} style={gridArea}>
-      <Link className={styles['post__home-button']} to="/">Back</Link>
+    <div>
+      <Iframely/>
+      <CARD mb>
+        <SPACER>
+          <TEXT_BASE_CENTER>
+            <time dateTime={moment(date).format('YYYY/MM/DD')}>
+              {moment(date).format('YYYY/MM/DD')}
+            </time>
+            {updatedDate && (
+                <> (更新日:
+                  <time dateTime={moment(updatedDate).format('YYYY/MM/DD')}>
+                    {moment(updatedDate).format('YYYY/MM/DD')}
+                  </time>
+                  )
+                </>
+            )}
+          </TEXT_BASE_CENTER>
 
-      <div className={styles['post__content']}>
-        <Content body={html} title={title} />
-      </div>
+          <TITLE_H1>{title}</TITLE_H1>
+          <TEXT_GATSBY_LINK to={`category/${kebabCase(category)}`}>{category}</TEXT_GATSBY_LINK>
+        </SPACER>
+      </CARD>
+      <ImageWrap item={{socialImage: socialImage}} size={'normal'} />
+      <CARD top>
+        <SPACER>
+          <div tw="my-4">
+            <div className={'content'} dangerouslySetInnerHTML={{ __html: html }} />
+          </div>
+          <Tags tags={tags} urlPrefix={'tags'} />
+          <ShareSns articleUrl={url + slug} articleTitle={title} />
+        </SPACER>
+      </CARD>
 
-      <div className={styles['post__footer']}>
-        <Meta date={date} />
-        {tags && tagSlugs && <Tags tags={tags} tagSlugs={tagSlugs} />}
-        {typeof window !== 'undefined' && window.location.href &&
-          <ShareSns articleUrl={window.location.href} articleTitle={title} />
-        }
-        {typeof window !== 'undefined' && window.location.href &&
-          <Disqus
-              identifier={id}
-              title={title}
-              url={window.location.href}
-          />
-        }
-        <Author />
-      </div>
+      {disqusShortname &&
+          <CARD>
+            <SPACER>
+              <Disqus
+                  identifier={id}
+                  title={title}
+                  url={url + slug}
+              />
+            </SPACER>
+          </CARD>
+      }
 
-      <div className={styles['post__comments']}>
-        <Comments postSlug={slug} postTitle={post.frontmatter.title} />
-      </div>
+      {relatedArticles.length !== 0 &&
+          <CARD>
+            <SPACER>
+              <TITLE_H3>Related Links</TITLE_H3>
+              <HR/>
+              <InstantView flex items={relatedArticles} />
+            </SPACER>
+          </CARD>
+      }
     </div>
   );
 };

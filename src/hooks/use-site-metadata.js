@@ -1,4 +1,3 @@
-// @flow strict
 import { useStaticQuery, graphql } from 'gatsby';
 
 const useSiteMetadata = () => {
@@ -7,44 +6,50 @@ const useSiteMetadata = () => {
       query SiteMetaData {
         site {
           siteMetadata {
-            author {
-              name
-              bio
-              photo
-              contacts {
-                facebook
-                linkedin
-                github
-                twitter
-                telegram
-                instagram
-                email
-                rss
-                vkontakte
-                line
-                gitlab
-                weibo
-                codepen
-                youtube
-                soundcloud
+            siteConfig {
+              author {
+                name
+                bio
+                photo
+                contacts {
+                  facebook
+                  linkedin
+                  github
+                  twitter
+                  telegram
+                  instagram
+                  email
+                  rss
+                  vkontakte
+                  line
+                  gitlab
+                  weibo
+                  codepen
+                  youtube
+                  soundcloud
+                }
               }
+              menu {
+                label
+                path
+              }
+              topContents {
+                url
+              }
+              url
+              title
+              subtitle
+              copyright
+              disqusShortname
+              headerImage
             }
-            menu {
-              label
-              path
-            }
-            url
-            title
-            subtitle
-            copyright
-            disqusShortname
           }
         }
       }
     `
   );
 
-  return site.siteMetadata;
+  return site.siteMetadata.siteConfig;
 };
 
 export default useSiteMetadata;

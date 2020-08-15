@@ -1,30 +1,22 @@
-// @flow strict
 import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Post from '../components/Post';
 import { useSiteMetadata } from '../hooks';
-import type { MarkdownRemark } from '../types';
-import styles from '../components/Layout/PostLayout.module.scss';
-import Toc from "../components/Toc";
+import Sidebar from "../components/Sidebar";
+import "twin.macro"
 
-type Props = {
-  data: {
-    markdownRemark: MarkdownRemark
-  }
-};
-
-const PostTemplate = ({ data }: Props) => {
+const PostTemplate = ({ data }) => {
   const { title: siteTitle, subtitle: siteSubtitle } = useSiteMetadata();
   const { frontmatter, excerpt } = data.markdownRemark;
   const { title: postTitle, description: postDescription, socialImage } = frontmatter;
   const metaDescription = postDescription !== null ? excerpt : siteSubtitle;
 
+  const main = <Post post={data.markdownRemark} />;
+  const toc = <div className={'toc'} dangerouslySetInnerHTML={{ __html: data.markdownRemark.tableOfContents }}/>;
+  const side = <Sidebar toc={toc}/>;
   return (
-    <Layout styles={styles} title={`${postTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
-      <Post post={data.markdownRemark} gridArea={{ gridArea: 'post' }} />
-      <Toc tableOfContents={data.markdownRemark.tableOfContents} gridArea={{ gridArea: 'toc' }}/>
-    </Layout>
+    <Layout main={main} side={side} title={`${postTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} />
   );
 };
 
@@ -39,10 +31,12 @@ export const query = graphql`
       }
       frontmatter {
         date
-        description
+        updatedDate
         tags
         title
         socialImage
+        category
+        relatedLinks
       }
       tableOfContents
     }
