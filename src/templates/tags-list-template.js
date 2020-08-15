@@ -1,28 +1,27 @@
-// @flow strict
 import React from 'react';
+import { graphql } from "gatsby";
+import { useSiteMetadata } from '../hooks';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import Page from '../components/Page';
-import { useSiteMetadata, useTagsList } from '../hooks';
-import Tags from "../components/Tags";
 import Feed from "../components/Feed";
-import { graphql } from "gatsby";
-import styles from '../components/Layout/Layout.module.scss';
-import Divider from "../components/Divider";
 
 const TagsListTemplate = ({ data, pageContext }) => {
   const { title, subtitle } = useSiteMetadata();
-  const tags = useTagsList();
+  const { edges, group } = data.allMarkdownRemark;
+
+  const pageTitle = pageContext.tag === '*' ? '' : `${pageContext.tag}に関する記事一覧`;
+  const mainPage = (
+      <Page title={pageTitle} content={(
+        <Feed edges={edges} />
+      )}>
+      </Page>
+  );
+
+  const side = <Sidebar/>;
 
   return (
-    <Layout styles={styles} title={`Tags - ${title}`} description={subtitle}>
-      <Sidebar gridArea={{ gridArea: 'side' }} />
-      <Divider gridArea={{ gridArea: 'divider' }}/>
-      <Page gridArea={{ gridArea: 'page' }} title="Tags">
-        <Tags tags={tags} selectedTag={pageContext.tag}/>
-        <Feed edges={data.allMarkdownRemark.edges} />
-      </Page>
-    </Layout>
+    <Layout main={mainPage} side={side} title={`Tags - ${title}`} description={subtitle} />
   );
 };
 
@@ -51,8 +50,8 @@ query TagsListTemplate($tag: String!) {
                     title
                     date
                     category
-                    description
                     socialImage
+                    tags
                 }
                 excerpt
             }

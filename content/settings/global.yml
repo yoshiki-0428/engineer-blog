@@ -1,0 +1,67 @@
+siteConfig:
+  disqusShortname: "tech-blog-yoshikiohashi"
+  socialMediaCard:
+    image: https://ucarecdn.com/37bf29a4-dcb3-456b-afc0-f34d138c3f77/
+  copyright: © 2020 Yoshiki Ohashi All rights reserved.
+  author:
+    name: Yoshiki Ohashi
+    photo: /media/icon.jpg
+    bio: 2x歳の個人事業主エンジニア。SI企業1年, Webベンチャー企業2年で上流から下流の経験を経て独立。
+      エンジニアらしく性格は温和。プロジェクトチームに心理的安全性を求める。go gin | Spring | Java | Kotlin | Vue |
+      Python | 筋トレ | キャンプ | 個人開発 | 新潟出身
+    contacts:
+      telegram: ""
+      youtube: ""
+      github: yoshiki-0428
+      soundcloud: ""
+      facebook: yoshiki.ohashi0428
+      weibo: ""
+      codepen: ""
+      rss: /rss.xml
+      instagram: ""
+      twitter: yoshiki__0428
+      line: ""
+      gitlab: ""
+      vkontakte: ""
+      email: rrrtcdish2+tech-blog@gmail.com
+      linkedin: ""
+  headerImage: ""
+  url: https://tech-blog.yoshikiohashi.dev
+  topContents:
+    - url: ""
+    - url: ""
+    - url: ""
+  pathPrefix: /
+  subtitle: YOSHIKI@個人事業主||多機能エンジニアのTech Blog
+  title: Blog by yoshikiohashi
+  postsPerPage: 15
+  popularView:
+    googleAnalyticsStartDate: 60daysAgo
+    googleAnalyticsEndDate: today
+    googleAnalyticsMetrics: ga:pageviews
+    googleAnalyticsFiltersUrl: /posts
+    googleAnalyticsPageSize: 5
+  menu:
+    - label: My Portfolio
+      path: https://yoshikiohashi.dev/
+    - label: About me
+      path: /pages/about
+    - label: Blog Source Code
+      path: https://github.com/yoshiki-0428/gatsby-all-pack-theme-starter
+siteDesign:
+  white: "#1F1F1F"
+  primary: "#00FFC5"
+  accent: "#0095FB"
+  baseBack: "#121212"
+  baseFont: "#FAFAFA"
+  baseGray: "#3F3F3F"
+  baseGrayLight: "#4E4E4E"
+  rounded: 6px
+secretConfig:
+  algoliaAppId: XIKSJSCPJ3
+  algoliaSearchApiKey: a0eb781d9e8354258d74c311a05f0cc1
+  algoliaIndexName: tech-blog-yoshikiohashi
+  googleAdsnseClientId: ""
+  googleAdsnseClientSlot: ""
+  googleAnalyticsId: UA-157574909-3
+  googleAnalyticsViewId: "219075804"

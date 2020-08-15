@@ -1,25 +1,14 @@
-// @flow strict
 import React from 'react';
 import { graphql } from 'gatsby';
+import { useSiteMetadata } from '../hooks';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import Feed from '../components/Feed';
 import Page from '../components/Page';
 import Pagination from '../components/Pagination';
-import { useSiteMetadata } from '../hooks';
-import type { PageContext, AllMarkdownRemark } from '../types';
-import Copyright from "../components/Sidebar/Copyright";
-import styles from '../components/Layout/Layout.module.scss';
-import Divider from "../components/Divider";
 
-type Props = {
-  data: AllMarkdownRemark,
-  pageContext: PageContext
-};
-
-const IndexTemplate = ({ data, pageContext }: Props) => {
+const IndexTemplate = ({ data, pageContext }) => {
   const { title: siteTitle, subtitle: siteSubtitle } = useSiteMetadata();
-  const { copyright } = useSiteMetadata();
 
   const {
     currentPage,
@@ -32,11 +21,9 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
   const { edges } = data.allMarkdownRemark;
   const pageTitle = currentPage > 0 ? `Posts - Page ${currentPage} - ${siteTitle}` : siteTitle;
 
-  return (
-    <Layout styles={styles} title={pageTitle} description={siteSubtitle}>
-      <Sidebar isIndex gridArea={{ gridArea: 'side' }} />
-      <Divider gridArea={{ gridArea: 'divider' }}/>
-      <Page gridArea={{ gridArea: 'page' }}>
+  const mainPage = (
+    <Page content={
+      <div>
         <Feed edges={edges} />
         <Pagination
           prevPagePath={prevPagePath}
@@ -44,9 +31,14 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
           hasPrevPage={hasPrevPage}
           hasNextPage={hasNextPage}
         />
-      </Page>
-      <Copyright copyright={copyright} />
-    </Layout>
+      </div>
+    }/>
+  );
+
+  const side = <Sidebar />;
+
+  return (
+    <Layout main={mainPage} side={side} title={pageTitle} description={siteSubtitle} top/>
   );
 };
 
@@ -58,6 +50,10 @@ export const query = graphql`
         filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true } } },
         sort: { order: DESC, fields: [frontmatter___date] }
       ){
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
       edges {
         node {
           fields {
@@ -67,14 +63,16 @@ export const query = graphql`
           frontmatter {
             title
             date
+            updatedDate
             category
-            description
             socialImage
+            tags
           }
           excerpt
         }
       }
     }
+    
   }
 `;
 

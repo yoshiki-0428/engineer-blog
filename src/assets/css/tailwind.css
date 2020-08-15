@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap');
+
+/*! purgecss start ignore */
+@tailwind base;
+
+html {
+    @apply text-base;
+}
+
+body {
+    font-family: 'Raleway', sans-serif, "游ゴシック体", YuGothic;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* content */
+.content h1 {
+    @apply text-xl;
+    @apply text-base-font font-bold leading-loose;
+    @apply bg-base-gray-light;
+    @apply py-4 px-6 mt-10 mb-6;
+    @apply border-l-8 border-solid border-primary;
+}
+.content h2 {
+    @apply text-lg;
+    @apply text-base-font font-bold;
+    @apply px-3 my-6;
+    @apply border-l-8 border-solid border-primary;
+}
+.content h3 {
+    @apply text-lg;
+    @apply text-base-font font-bold;
+    @apply my-4;
+}
+.content h4 {
+    @apply text-base-font text-lg;
+    @apply my-3;
+}
+.content blockquote {
+    @apply relative;
+    @apply p-3 my-6;
+    @apply text-base-font bg-base-gray-light;
+    @apply border-l-4 border-solid border-base-gray;
+}
+.content p {
+    @apply text-base-font;
+    @apply leading-7;
+}
+.content .iframely-embed {
+    @apply my-4;
+}
+.c {
+    @apply z-0 !important;
+}
+.body {
+    @apply rounded !important;
+}
+.content a {
+    @apply break-all;
+    @apply text-accent underline;
+}
+.content a > svg {
+    @apply hidden;
+}
+.content img {
+    @apply px-3 my-6;
+}
+.content pre {
+    @apply rounded-sm;
+}
+.content table {
+    @apply text-base-font;
+    @apply border-2;
+    @apply block overflow-scroll;
+    @apply my-6;
+    @apply table-auto;
+}
+.content th {
+    @apply text-base-font;
+    @apply border w-1/2 px-4 py-2;
+}
+.content td {
+    @apply text-base-font;
+    @apply border px-4 py-2
+}
+.content ul {
+    @apply text-base-font;
+    @apply p-3 mt-2 ml-2;
+    @apply list-disc;
+}
+
+.toc ul {
+    @apply text-base-font;
+    @apply list-inside list-none;
+    @apply m-0;
+}
+.toc a {
+    @apply text-accent underline;
+}
+.toc p {
+    @apply m-0;
+}
+
+/* algolia */
+.ais-SearchBox-form {
+    display: block;
+    position: relative;
+}
+[class^=ais-] {
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+.ais-SearchBox-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: .3rem 1.7rem;
+    width: 100%;
+    position: relative;
+    @apply bg-white;
+    @apply text-base-font;
+    @apply border-0 border-b-4 border-primary !important;
+    border-radius: 0 !important;
+}
+.ais-SearchBox-input::placeholder {
+    @apply text-base-font;
+}
+.ais-SearchBox-submit {
+    left: .3rem;
+}
+.ais-SearchBox-reset {
+    right: .3rem;
+}
+.ais-SearchBox-resetIcon path, .ais-SearchBox-submitIcon path {
+    @apply fill-base-font;
+}
+.ais-SearchBox-loadingIndicator, .ais-SearchBox-reset, .ais-SearchBox-submit {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: absolute;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    right: .3rem;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.ais-SearchBox-loadingIcon, .ais-SearchBox-resetIcon, .ais-SearchBox-submitIcon {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+.ais-SearchBox-submitIcon {
+    width: 14px;
+    height: 14px;
+}
+.ais-Hits-item {
+    @apply w-full mb-4 rounded;
+    @apply list-none;
+    @apply shadow-lg bg-white;
+}
+.ais-Highlight-highlighted {
+    @apply bg-accent;
+}
+
+.ais-Panel-header {
+    border-bottom: 1px solid #eee;
+    text-transform: none !important;
+}
+.ais-Panel-body {
+    max-height: 310px;
+    overflow-y: scroll;
+}
+.ais-Panel-footer {
+    border-top: 1px solid #eee;
+    padding-bottom: 0;
+}
+
+.ais-PoweredBy {
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+.ais-PoweredBy-text {
+    margin-right: 8px;
+}
+
+
+@tailwind components;
+/*! purgecss end ignore */
+
+
+@tailwind utilities;
