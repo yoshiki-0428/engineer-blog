@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Observer from './Observer';
-import styles from './Image.module.scss';
+import tw from "twin.macro"
 
 class Image extends React.Component {
   constructor(props) {
@@ -41,19 +41,16 @@ class Image extends React.Component {
     if (res === 'small') {
       res = '400x'
     } else if (res === 'medium') {
-      res = '500x'
-    } else if (res === 'large') {
       res = '1000x'
+    } else if (res === 'large') {
+      res = '3000x'
     }
     return res
   }
 
   render() {
     let {
-      background,
-      backgroundSize = 'cover',
-      resolutions = '1000x',
-      className = styles['Content--Image'],
+      resolutions = 'large',
       src,
       secSet = '',
       fullSrc,
@@ -65,8 +62,8 @@ class Image extends React.Component {
       greyScale = false
     } = this.props;
 
-    const isUploadcare = this.checkIsUploadcare(src),
-        fullImage = !isUploadcare || !lazy;
+    const isUploadcare = this.checkIsUploadcare(src);
+    const normalImage = !isUploadcare || !lazy;
 
     /* create source set for images */
     if (isUploadcare) {
@@ -76,90 +73,57 @@ class Image extends React.Component {
     }
 
     fullSrc = `${src}${
-        isUploadcare
-            ? '-/progressive/yes/-/format/auto/-/resize/' +
-            this.getResolutionString(resolutions) +
-            '/'
-            : ''
+      isUploadcare ? '-/progressive/yes/-/format/auto/-/resize/' + this.getResolutionString(resolutions) + '/' : ''
     }`;
-
     smallSrc = `${src}${
         isUploadcare ? '-/progressive/yes/-/format/auto/-/resize/10x/' : ''
     }`;
+
     if (greyScale) {
       const GREY_SCALE_FILTER = '-/filter/carris/';
       smallSrc += GREY_SCALE_FILTER;
       fullSrc += GREY_SCALE_FILTER;
     }
 
-    let style = {};
-    if (background) {
-      style = {
-        backgroundImage: `url(${
-            this.state.isIntersecting ? fullSrc : smallSrc
-        })`,
-        backgroundSize
-      }
-    }
+    const style = {
+      backgroundImage: `url(${
+          this.state.isIntersecting ? fullSrc : smallSrc
+      })`,
+      opacity: `${this.state.isIntersecting} ? 1 : 0`,
+      transition: "ease all 0.3s",
+    };
+
+    const ImageDiv = tw.div`inset-0 absolute overflow-hidden bg-center bg-no-repeat bg-cover`;
 
     return (
-        <Fragment>
-          {isUploadcare && lazy && (
-              <Observer onChange={this.handleIntersection}>
-                <div
-                    className="BackgroundImage"
-                    ref={this.ref}
-                    style={{
-                      backgroundImage: `url(${smallSrc})`,
-                      backgroundSize: 'cover'
-                    }}
-                >
-                  {!background && (
-                      <img
-                          className={`LazyImage ${
-                              className + this.state.isIntersecting ? ' faded' : ''
-                          }`}
-                          src={this.state.isIntersecting ? fullSrc : ''}
-                          srcSet={this.state.isIntersecting ? secSet : ''}
-                          sizes={'100vw'}
-                          onClick={onClick}
-                          title={title}
-                          alt={alt}
-                      />
-                  )}
-                  {background && (
-                      <div
-                          className={`LazyImage BackgroundImage absolute ${
-                              className + this.state.isIntersecting ? ' faded' : ''
-                          }`}
-                          style={style}
-                      />
-                  )}
-                </div>
-              </Observer>
-          )}
-          {fullImage && (
-              <Fragment>
-                {background && (
-                    <div
-                        className={`BackgroundImage absolute ${className}`}
-                        style={style}
-                    />
-                )}
-                {!background && (
-                    <img
-                        className={`${className}`}
-                        src={fullSrc}
-                        srcSet={secSet}
-                        sizes={'100vw'}
-                        onClick={onClick}
-                        title={title}
-                        alt={alt}
-                    />
-                )}
-              </Fragment>
-          )}
-        </Fragment>
+      <Fragment>
+        {isUploadcare && lazy && (
+          <Observer onChange={this.handleIntersection}>
+            <ImageDiv
+              ref={this.ref}
+              style={
+                { backgroundImage: `url(${smallSrc})` }
+              }
+            >
+              <ImageDiv
+                style={style}
+              />
+            </ImageDiv>
+          </Observer>
+        )}
+        {normalImage && (
+          <Fragment>
+            <img
+              src={fullSrc}
+              srcSet={secSet}
+              sizes={'100vw'}
+              onClick={onClick}
+              title={title}
+              alt={alt}
+            />
+          </Fragment>
+        )}
+      </Fragment>
     )
   }
 }

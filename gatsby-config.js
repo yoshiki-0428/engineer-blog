@@ -1,18 +1,23 @@
-'use strict';
-
-const siteConfig = require('./config.js');
 const postCssPlugins = require('./postcss-config.js');
 
+const resolveConfig = require("tailwindcss/resolveConfig");
+const tailwindConfig = require("./tailwind.config.js");
+const config = require("./loadYaml.js");
+const fullConfig = resolveConfig(tailwindConfig);
+
 module.exports = {
-  pathPrefix: siteConfig.pathPrefix,
+  pathPrefix: config.siteConfig.pathPrefix,
   siteMetadata: {
-    url: siteConfig.url,
-    title: siteConfig.title,
-    subtitle: siteConfig.subtitle,
-    copyright: siteConfig.copyright,
-    disqusShortname: siteConfig.disqusShortname,
-    menu: siteConfig.menu,
-    author: siteConfig.author
+    siteUrl: config.siteConfig.url,
+    siteConfig: {
+      ...config.siteConfig,
+    },
+    siteDesign: {
+      ...config.siteDesign,
+    },
+    secretConfig: {
+      ...config.secretConfig
+    }
   },
   plugins: [
     {
@@ -50,9 +55,11 @@ module.exports = {
           {
             site {
               siteMetadata {
-                site_url: url
-                title
-                description: subtitle
+                siteConfig {
+                  url
+                  title
+                  description: subtitle
+                }
               }
             }
           }
@@ -63,8 +70,8 @@ module.exports = {
               ...edge.node.frontmatter,
               description: edge.node.frontmatter.description,
               date: edge.node.frontmatter.date,
-              url: site.siteMetadata.site_url + edge.node.fields.slug,
-              guid: site.siteMetadata.site_url + edge.node.fields.slug,
+              url: site.siteMetadata.siteConfig.url + edge.node.fields.slug,
+              guid: site.siteMetadata.url + edge.node.fields.slug,
               custom_elements: [{ 'content:encoded': edge.node.html }]
             }))
           ),
@@ -86,7 +93,6 @@ module.exports = {
                         date
                         template
                         draft
-                        description
                       }
                     }
                   }
@@ -94,21 +100,30 @@ module.exports = {
               }
             `,
           output: '/rss.xml',
-          title: siteConfig.title
+          title: config.siteConfig.title
         }]
       }
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: config.siteConfig.url,
+        sitemap: config.siteConfig.url + "/sitemap.xml",
+        env: {
+          development: {
+            policy: [{ userAgent: "*", disallow: ["/"] }],
+          },
+          production: {
+            policy: [{ userAgent: "*", allow: "/" }],
+          },
+        },
+      },
     },
     {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           'gatsby-remark-relative-images',
-          {
-            resolve: 'gatsby-remark-katex',
-            options: {
-              strict: 'ignore'
-            }
-          },
           {
             resolve: 'gatsby-remark-images',
             options: {
@@ -117,6 +132,8 @@ module.exports = {
               ignoreFileExtensions: [],
             }
           },
+          "gatsby-remark-embed-youtube",
+          "gatsby-plugin-twitter",
           {
             resolve: 'gatsby-remark-responsive-iframe',
             options: { wrapperStyle: 'margin-bottom: 1.0725rem' }
@@ -141,16 +158,68 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingIds: [siteConfig.googleAnalyticsId],
+        trackingIds: [config.secretConfig.googleAnalyticsId],
         pluginConfig: {
           head: true,
         },
       },
     },
     {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: config.secretConfig.algoliaAppId,
+        apiKey: process.env['ALGOLIA_ADMIN_KEY'],
+        indexName: config.secretConfig.algoliaIndexName,
+        queries: [
+            {
+              query: `{
+                allMarkdownRemark(
+                  limit: 1000,
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                  filter: { frontmatter: { template: { eq: "post" }, draft: { eq: false } } }
+                ) {
+                  edges {
+                    node {
+                      fields {
+                        slug
+                      }
+                      frontmatter {
+                        title
+                        date(formatString: "MMMM DD, YYYY")
+                        template
+                        category
+                        socialImage
+                        tags
+                      }
+                      excerpt
+                      rawMarkdownBody
+                    }
+                  }
+                }
+              }`,
+              transformer: ({ data }) =>
+                data.allMarkdownRemark.edges.flatMap(({ node }) => {
+                  return {
+                    id: node.fields.slug,
+                    title: node.frontmatter.title,
+                    date: new Date(node.frontmatter.date),
+                    template: node.fields.template,
+                    category: node.fields.category,
+                    socialImage: node.fields.socialImage,
+                    tags: node.fields.tags,
+                    excerpt: node.excerpt,
+                    rawMarkdownBody: node.rawMarkdownBody,
+                  }
+                }),
+            },
+        ],
+        chunkSize: 10000,
+      }
+    },
+    {
       resolve: `gatsby-plugin-disqus`,
       options: {
-        shortname: `tech-blog-yoshikiohashi`
+        shortname: config.siteConfig.disqusShortname
       }
     },
     {
@@ -160,7 +229,7 @@ module.exports = {
           {
             site {
               siteMetadata {
-                siteUrl: url
+                siteUrl
               }
             }
             allSitePage(
@@ -187,13 +256,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: siteConfig.title,
-        short_name: siteConfig.title,
+        name: config.siteConfig.title,
+        short_name: config.siteConfig.title,
         start_url: '/',
         background_color: '#FFF',
         theme_color: '#F7A046',
         display: 'standalone',
-        icon: 'static/photo.jpg'
+        icon: 'static/icon.jpg'
       },
     },
     'gatsby-plugin-offline',
@@ -208,7 +277,20 @@ module.exports = {
         }
       }
     },
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [
+          require(`tailwindcss`)(tailwindConfig),
+          require(`autoprefixer`),
+          ...(process.env.NODE_ENV === `production`
+              ? [require(`cssnano`)]
+              : []),
+        ],
+      },
+    },
     'gatsby-plugin-flow',
     'gatsby-plugin-optimize-svgs',
+    'gatsby-plugin-emotion',
   ]
 };

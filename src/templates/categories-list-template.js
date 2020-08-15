@@ -1,28 +1,27 @@
-// @flow strict
 import React from 'react';
 import { graphql } from 'gatsby';
+import { useSiteMetadata } from '../hooks';
 import Sidebar from '../components/Sidebar';
 import Layout from '../components/Layout';
 import Page from '../components/Page';
-import { useSiteMetadata, useCategoriesList } from '../hooks';
-import Category from "../components/Category/Category";
 import Feed from "../components/Feed";
-import styles from '../components/Layout/Layout.module.scss';
-import Divider from "../components/Divider";
 
 const CategoriesListTemplate = ({ data, pageContext }) => {
   const { title, subtitle } = useSiteMetadata();
-  const categories = useCategoriesList();
+  const { edges } = data.allMarkdownRemark;
+
+  const pageTitle = pageContext.category === '*' ? '' : `${pageContext.category}に関する記事一覧`;
+  const mainPage = (
+    <Page title={pageTitle} content={(
+      <Feed edges={edges} />
+    )}>
+    </Page>
+  );
+
+  const side = <Sidebar/>;
 
   return (
-    <Layout styles={styles} title={`Categories - ${title}`} description={subtitle}>
-      <Sidebar gridArea={{ gridArea: 'side' }} />
-      <Divider gridArea={{ gridArea: 'divider' }}/>
-      <Page title="Categories" gridArea={{ gridArea: 'page' }}>
-        <Category category={categories} selectedCategory={pageContext.category}/>
-        <Feed edges={data.allMarkdownRemark.edges} />
-      </Page>
-    </Layout>
+    <Layout main={mainPage} side={side} title={`Categories - ${title}`} description={subtitle}/>
   );
 };
 
@@ -32,6 +31,10 @@ export const query = graphql`
             filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true }, category: { glob: $category } } },
             sort: { order: DESC, fields: [frontmatter___date] }
         ){
+            group(field: frontmatter___tags) {
+                fieldValue
+                totalCount
+            }
             edges {
                 node {
                     fields {
@@ -42,8 +45,8 @@ export const query = graphql`
                         title
                         date
                         category
-                        description
                         socialImage
+                        tags
                     }
                     excerpt
                 }
