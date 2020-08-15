@@ -6,8 +6,11 @@ draft: false
 date: 2020-05-22T10:24:11.603Z
 category: Programming
 tags:
-  - Docker
+  - docker
   - Dev Ops
+relatedLinks:
+  - /posts/k8s-argo-research
+  - /posts/redis-pingpong
 socialImage: https://ucarecdn.com/f99ace25-5fb1-49c5-817b-659877811fb4/
 ---
 ## dockerのイメージをLatestにしたらあかん
