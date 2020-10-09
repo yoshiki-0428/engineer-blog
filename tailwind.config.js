@@ -20,6 +20,13 @@ module.exports = {
         "base-gray": config.siteDesign.baseGray,
         "base-gray-light": config.siteDesign.baseGrayLight
       },
+      inset: {
+        '1/5': '20%',
+        '2/5': '40%',
+        '3/5': '60%',
+        '4/5': '80%',
+        '5/5': '100%',
+      },
       fill: {
         "base-font": config.siteDesign.baseFont,
       }
