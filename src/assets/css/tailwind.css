@@ -73,18 +73,19 @@ body {
 }
 .content table {
     @apply text-base-font;
-    @apply border-2;
     @apply block overflow-scroll;
     @apply my-6;
-    @apply table-auto;
+    @apply table-fixed;
 }
 .content th {
     @apply text-base-font;
-    @apply border w-1/2 px-4 py-2;
+    @apply border;
+    @apply px-4 py-2;
 }
 .content td {
     @apply text-base-font;
-    @apply border px-4 py-2
+    @apply border;
+    @apply px-4 py-2;
 }
 .content ul {
     @apply text-base-font;
@@ -96,13 +97,21 @@ body {
     @apply p-3 mt-2 ml-2;
     @apply list-decimal;
 }
-
+.toc {
+    @apply sticky top-0;
+}
 .toc ul {
     @apply text-base-font;
     @apply list-inside list-none;
-    @apply m-0;
+    @apply ml-4;
+}
+.toc li {
+    @apply m-2;
 }
 .toc a {
+    @apply text-accent;
+}
+.toc a:hover {
     @apply text-accent underline;
 }
 .toc p {

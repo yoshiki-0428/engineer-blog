@@ -8,7 +8,7 @@ import Page from '../components/Page';
 import Pagination from '../components/Pagination';
 
 const IndexTemplate = ({ data, pageContext }) => {
-  const { title: siteTitle, subtitle: siteSubtitle } = useSiteMetadata();
+  const { title: siteTitle, subtitle: siteSubtitle, socialMediaCard } = useSiteMetadata();
 
   const {
     currentPage,
@@ -38,7 +38,7 @@ const IndexTemplate = ({ data, pageContext }) => {
   const side = <Sidebar />;
 
   return (
-    <Layout main={mainPage} side={side} title={pageTitle} description={siteSubtitle} top/>
+    <Layout main={mainPage} socialImage={socialMediaCard.image} side={side} title={pageTitle} description={siteSubtitle} top/>
   );
 };
 
@@ -68,7 +68,7 @@ export const query = graphql`
             socialImage
             tags
           }
-          excerpt
+          excerpt(truncate: true)
         }
       }
     }

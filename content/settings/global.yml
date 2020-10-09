@@ -18,6 +18,7 @@ siteConfig:
       weibo: ""
       codepen: ""
       rss: /rss.xml
+      feedly: https://feedly.com/i/discover/sources/search/feed/https%3A%2F%2Ftech-blog.yoshikiohashi.dev%2F
       instagram: ""
       twitter: yoshiki__0428
       line: ""
@@ -28,9 +29,9 @@ siteConfig:
   headerImage: ""
   url: https://tech-blog.yoshikiohashi.dev
   topContents:
-    - url: ""
-    - url: ""
-    - url: ""
+    - url: /posts/create-esa-source-lambda-cms
+    - url: /posts/start-gatsby-blog
+    - url: /posts/oyo-life-review
   pathPrefix: /
   subtitle: YOSHIKI@個人事業主||多機能エンジニアのTech Blog
   title: Blog by yoshikiohashi

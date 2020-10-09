@@ -48,7 +48,7 @@ export const query = graphql`
                         socialImage
                         tags
                     }
-                    excerpt
+                    excerpt(truncate: true)
                 }
             }
         }

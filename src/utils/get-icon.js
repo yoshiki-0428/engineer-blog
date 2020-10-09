@@ -22,6 +22,9 @@ const getIcon = (name) => {
     case 'rss':
       icon = ICONS.RSS;
       break;
+    case 'feedly':
+      icon = ICONS.FEEDLY;
+      break;
     case 'linkedin':
       icon = ICONS.LINKEDIN;
       break;

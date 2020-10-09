@@ -53,7 +53,7 @@ query TagsListTemplate($tag: String!) {
                     socialImage
                     tags
                 }
-                excerpt
+                excerpt(truncate: true)
             }
         }
     }

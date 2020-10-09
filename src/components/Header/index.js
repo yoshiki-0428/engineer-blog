@@ -76,7 +76,15 @@ export class Header extends Component {
 
     return (
         <StickyDiv>
-          {headerImage && (<CENTER_PHOTO_NORMAL photo={headerImage} name={'header'}/>)}
+          {headerImage && (
+            <span tw="flex justify-between">
+              <div/>
+              <Link to={'/'}>
+                <img tw="p-4 h-20 md:h-24 lg:h-24 xl:h-24" src={headerImage} alt={'headerImage'} />
+              </Link>
+              <div/>
+            </span>
+          )}
           {!headerImage && (<div tw={"mt-4"}/>)}
 
           <Nav>

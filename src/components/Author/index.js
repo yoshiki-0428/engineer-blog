@@ -2,7 +2,7 @@ import Contacts from "../Contacts";
 import Menu from "../Menu";
 import React from "react";
 import {useSiteMetadata} from "../../hooks";
-import {CENTER_PHOTO, SPACER, SPACER_MINI, TEXT_BASE} from "../Tailwind";
+import {CENTER_PHOTO, SPACER_MINI, TEXT_BASE} from "../Tailwind";
 
 const Author = () => {
   const { author, menu } = useSiteMetadata();
@@ -14,9 +14,11 @@ const Author = () => {
           <TEXT_BASE>{author.bio}</TEXT_BASE>
         </SPACER_MINI>
         <Contacts contacts={author.contacts} />
-        <Menu items={menu}/>
+        {menu.length < 0 && menu[0].label !== '' && (
+          <Menu items={menu}/>
+        )}
       </SPACER_MINI>
-  )
+  );
 };
 
 export default Author;

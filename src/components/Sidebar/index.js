@@ -48,7 +48,7 @@ const SideBar = ({ toc }) => {
       </CARD>
 
       {toc &&(
-          <div tw="hidden lg:block">
+          <div tw="hidden lg:block sticky top-1/5">
             <CARD>
               <SPACER>
                 <TITLE_H3>目次</TITLE_H3>
