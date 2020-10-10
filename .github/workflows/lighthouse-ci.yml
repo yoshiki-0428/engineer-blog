@@ -27,3 +27,39 @@ jobs:
         run: |
           npm install -g @lhci/cli@0.3.x
           lhci autorun --upload.target=temporary-public-storage --staticDistDir=./public || echo "LHCI failed!"
+
+      - name: Set COMMIT_MESSAGE
+        run: echo ::set-env name=COMMIT_MESSAGE::$(echo "${{ github.event.head_commit.message }}" | tr '\n' ' ')
+      - name: Slack Notification on SUCCESS
+        if: success()
+        uses: tokorom/action-slack-incoming-webhook@master
+        env:
+          INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          text: Successfully GitHub Actions!
+          attachments: |
+            [
+              {
+                "color": "good",
+                "author_name": "GitHub Actions Notify",
+                "author_icon": "${{ github.event.sender.avatar_url }}",
+                "fields": [
+                  {
+                    "title": "Repository",
+                    "value": "${{ github.repository }}"
+                  },
+                  {
+                    "title": "Commit Message",
+                    "value": "${{ env.COMMIT_MESSAGE }}"
+                  },
+                  {
+                    "title": "GitHub Actions URL",
+                    "value": "${{ github.event.repository.url }}/actions/runs/${{ github.run_id }}"
+                  },
+                  {
+                    "title": "Compare URL",
+                    "value": "${{ github.event.compare }}"
+                  }
+                ]
+              }
+            ]
