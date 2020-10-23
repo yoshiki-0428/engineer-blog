@@ -1,14 +1,14 @@
 import React from 'react';
-import { graphql } from "gatsby";
+import { graphql } from 'gatsby';
 import { useSiteMetadata } from '../hooks';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import Page from '../components/Page';
-import Feed from "../components/Feed";
+import Feed from '../components/Feed';
 
 const TagsListTemplate = ({ data, pageContext }) => {
   const { title, subtitle } = useSiteMetadata();
-  const { edges, group } = data.allMarkdownRemark;
+  const { edges } = data.allMarkdownRemark;
 
   const pageTitle = pageContext.tag === '*' ? '' : `${pageContext.tag}に関する記事一覧`;
   const mainPage = (
@@ -61,5 +61,3 @@ query TagsListTemplate($tag: String!) {
 `;
 
 export default TagsListTemplate;
-
-

@@ -1,21 +1,23 @@
-const config = require("../../loadYaml.js");
-const { GoogleAuth } = require("google-auth-library");
-const { GoogleApis } = require("googleapis");
+const { GoogleAuth } = require('google-auth-library');
+const { GoogleApis } = require('googleapis');
+const config = require('../../loadYaml.js');
 
-const sourceNode = async ({ actions, createNodeId, createContentDigest, reporter }) => {
+const sourceNode = async ({
+  actions, createNodeId, createContentDigest, reporter
+}) => {
   const { createNode } = actions;
   await addPopularPageNodes();
-  // `PopularPage` のノードを追加する
+
   async function addPopularPageNodes() {
     const CREDS = process.env['GA_CRED'];
     const VIEW_ID = config.secretConfig.googleAnalyticsViewId;
     if (!CREDS || !VIEW_ID) {
       reporter.warn('Not set secretConfig.googleAnalyticsCred || secretConfig.googleAnalyticsViewId');
-      return
+      return;
     }
     const auth = new GoogleAuth();
     const client = auth.fromJSON(JSON.parse(CREDS));
-    client.scopes = [`https://www.googleapis.com/auth/analytics.readonly`];
+    client.scopes = ['https://www.googleapis.com/auth/analytics.readonly'];
     const analyticsreporting = new GoogleApis().analyticsreporting({
       version: 'v4',
       auth: client,
@@ -57,15 +59,15 @@ const sourceNode = async ({ actions, createNodeId, createContentDigest, reporter
     });
 
     if (res.statusText !== 'OK') {
-      reporter.panic(`Reporting API response status is not OK.`);
-      return
+      reporter.panic('Reporting API response status is not OK.');
+      return;
     }
 
     const [report] = res.data.reports;
     const rows = report.data.rows || [];
-    console.info("GA:Views", rows);
+    console.info('GA:Views', rows);
 
-    rows.forEach(r => {
+    rows.forEach((r) => {
       const data = {
         path: r.dimensions[0],
         title: r.dimensions[1],
@@ -77,11 +79,11 @@ const sourceNode = async ({ actions, createNodeId, createContentDigest, reporter
         parent: null,
         children: [],
         internal: {
-          type: `PopularPage`,
+          type: 'PopularPage',
           contentDigest: createContentDigest(data),
         },
       };
-      const node = Object.assign({}, data, nodeMeta);
+      const node = { ...data, ...nodeMeta };
       createNode(node);
     });
   }

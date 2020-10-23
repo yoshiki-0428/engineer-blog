@@ -1,10 +1,9 @@
 import React from 'react';
-import tw from "twin.macro"
-import {HR, TITLE_H1} from "../Tailwind";
+import tw from 'twin.macro';
+import { HR, TITLE_H1 } from '../Tailwind';
 
 const Page = ({ title, content, footerContent }) => {
   const Body = tw.div`text-base flex justify-center`;
-
   return (
       <>
         {title && (

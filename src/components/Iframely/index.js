@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react'
-import Helmet from 'react-helmet'
+import React, { useEffect } from 'react';
+import Helmet from 'react-helmet';
 
 function Iframely() {
   useEffect(() => {
@@ -11,6 +11,6 @@ function Iframely() {
       <Helmet>
         <script type="text/javascript" src="https://cdn.iframe.ly/embed.js" />
       </Helmet>
-  )
+  );
 }
-export default Iframely
+export default Iframely;

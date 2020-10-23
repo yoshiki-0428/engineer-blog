@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { orderBy } from 'lodash/collection';
 import { kebabCase } from 'lodash/string';
-import tw from "twin.macro";
+import tw from 'twin.macro';
 
 const sortTotalCount = (tags) => orderBy(tags, ['totalCount', 'fieldValue'], ['desc']);
 
@@ -14,13 +14,13 @@ const Tags = ({ tags, urlPrefix }) => {
 
   return (
       <>
-        {sortTotalCount(tags).map(tag => (
+        {sortTotalCount(tags).map((tag) => (
             <Link key={tag.fieldValue} to={`${urlPrefix}/${kebabCase(tag.fieldValue)}`}>
               <Tag>#{tag.fieldValue}</Tag>
             </Link>
         ))}
       </>
-  )
+  );
 };
 
 export default Tags;

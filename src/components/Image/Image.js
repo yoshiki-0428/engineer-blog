@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
+import tw from 'twin.macro';
 import Observer from './Observer';
-import tw from "twin.macro"
 
 class Image extends React.Component {
   constructor(props) {
@@ -26,26 +26,26 @@ class Image extends React.Component {
     isIntersecting: false
   };
 
-  handleIntersection = e => {
+  handleIntersection = (e) => {
     if (e.isIntersecting) {
-      this.setState({ isIntersecting: true })
+      this.setState({ isIntersecting: true });
     }
   };
 
   checkIsUploadcare(src) {
-    return typeof src === 'string' && src.includes('ucarecdn.com')
+    return typeof src === 'string' && src.includes('ucarecdn.com');
   }
 
   getResolutionString(res) {
     /* add resolutions options for inline images */
     if (res === 'small') {
-      res = '400x'
+      res = '400x';
     } else if (res === 'medium') {
-      res = '1000x'
+      res = '1000x';
     } else if (res === 'large') {
-      res = '3000x'
+      res = '3000x';
     }
-    return res
+    return res;
   }
 
   render() {
@@ -67,16 +67,14 @@ class Image extends React.Component {
 
     /* create source set for images */
     if (isUploadcare) {
-      secSet = this.imageSizes.map(size => {
-        return `${src}-/progressive/yes/-/format/auto/-/preview/${size}x${size}/-/quality/lightest/${size}.jpg ${size}w`
-      })
+      secSet = this.imageSizes.map((size) => `${src}-/progressive/yes/-/format/auto/-/preview/${size}x${size}/-/quality/lightest/${size}.jpg ${size}w`);
     }
 
     fullSrc = `${src}${
-      isUploadcare ? '-/progressive/yes/-/format/auto/-/resize/' + this.getResolutionString(resolutions) + '/' : ''
+      isUploadcare ? `-/progressive/yes/-/format/auto/-/resize/${this.getResolutionString(resolutions)}/` : ''
     }`;
     smallSrc = `${src}${
-        isUploadcare ? '-/progressive/yes/-/format/auto/-/resize/10x/' : ''
+      isUploadcare ? '-/progressive/yes/-/format/auto/-/resize/10x/' : ''
     }`;
 
     if (greyScale) {
@@ -87,10 +85,10 @@ class Image extends React.Component {
 
     const style = {
       backgroundImage: `url(${
-          this.state.isIntersecting ? fullSrc : smallSrc
+        this.state.isIntersecting ? fullSrc : smallSrc
       })`,
       opacity: `${this.state.isIntersecting} ? 1 : 0`,
-      transition: "ease all 0.3s",
+      transition: 'ease all 0.3s',
     };
 
     const ImageDiv = tw.div`inset-0 absolute overflow-hidden bg-center bg-no-repeat bg-cover`;
@@ -124,7 +122,7 @@ class Image extends React.Component {
           </Fragment>
         )}
       </Fragment>
-    )
+    );
   }
 }
 

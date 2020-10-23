@@ -4,7 +4,7 @@ import { useSiteMetadata } from '../hooks';
 import Sidebar from '../components/Sidebar';
 import Layout from '../components/Layout';
 import Page from '../components/Page';
-import Feed from "../components/Feed";
+import Feed from '../components/Feed';
 
 const CategoriesListTemplate = ({ data, pageContext }) => {
   const { title, subtitle } = useSiteMetadata();

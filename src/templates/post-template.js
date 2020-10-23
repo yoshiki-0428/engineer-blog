@@ -3,8 +3,8 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Post from '../components/Post';
 import { useSiteMetadata } from '../hooks';
-import Sidebar from "../components/Sidebar";
-import "twin.macro"
+import Sidebar from '../components/Sidebar';
+import 'twin.macro';
 
 const PostTemplate = ({ data }) => {
   const { title: siteTitle, subtitle: siteSubtitle } = useSiteMetadata();

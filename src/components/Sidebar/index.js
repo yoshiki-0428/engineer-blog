@@ -1,11 +1,13 @@
 import React from 'react';
-import {useCategoriesList, usePopularList, useTagsList} from '../../hooks';
-import Tags from "../Tags";
-import Author from "../Author";
-import Adsense from "../Adsense";
-import InstantView from "../InstantView";
-import {CARD, HR, SPACER, TITLE_H3} from "../Tailwind";
-import "twin.macro";
+import { useCategoriesList, usePopularList, useTagsList } from '../../hooks';
+import Tags from '../Tags';
+import Author from '../Author';
+import Adsense from '../Adsense';
+import InstantView from '../InstantView';
+import {
+  CARD, HR, SPACER, TITLE_H3
+} from '../Tailwind';
+import 'twin.macro';
 
 const SideBar = ({ toc }) => {
   const popularList = usePopularList();
@@ -47,7 +49,7 @@ const SideBar = ({ toc }) => {
 
       </CARD>
 
-      {toc &&(
+      {toc && (
           <div tw="hidden lg:block sticky top-1/5">
             <CARD>
               <SPACER>

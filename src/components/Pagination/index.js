@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import tw from 'twin.macro';
 import { PAGINATION } from '../../constants';
-import tw from "twin.macro"
 
 const Index = ({
   prevPagePath,

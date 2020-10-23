@@ -1,8 +1,8 @@
-import Contacts from "../Contacts";
-import Menu from "../Menu";
-import React from "react";
-import {useSiteMetadata} from "../../hooks";
-import {CENTER_PHOTO, SPACER_MINI, TEXT_BASE} from "../Tailwind";
+import React from 'react';
+import Contacts from '../Contacts';
+import Menu from '../Menu';
+import { useSiteMetadata } from '../../hooks';
+import { CENTER_PHOTO, SPACER_MINI, TEXT_BASE } from '../Tailwind';
 
 const Author = () => {
   const { author, menu } = useSiteMetadata();

@@ -1,7 +1,7 @@
 const createSchemaCustomization = async ({ actions, schema }) => {
   const { createTypes } = actions;
   createPupularPage();
-  // `IPopularPage` と `PopularPage` を作成する
+
   function createPupularPage() {
     createTypes(`
       interface IPopularPage @nodeInterface {
@@ -11,18 +11,20 @@ const createSchemaCustomization = async ({ actions, schema }) => {
         count: Int!
       }
     `);
+
+
     createTypes(
-        schema.buildObjectType({
-          name: `PopularPage`,
-          fields: {
-            id: { type: `ID!` },
-            path: { type: `String!` },
-            title: { type: `String!` },
-            count: { type: `Int!` },
-          },
-          interfaces: [`Node`, `IPopularPage`],
-        })
-    )
+      schema.buildObjectType({
+        name: 'PopularPage',
+        fields: {
+          id: { type: 'ID!' },
+          path: { type: 'String!' },
+          title: { type: 'String!' },
+          count: { type: 'Int!' },
+        },
+        interfaces: ['Node', 'IPopularPage'],
+      })
+    );
   }
 };
 

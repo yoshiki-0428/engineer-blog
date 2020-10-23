@@ -38,7 +38,11 @@ const IndexTemplate = ({ data, pageContext }) => {
   const side = <Sidebar />;
 
   return (
-    <Layout main={mainPage} socialImage={socialMediaCard.image} side={side} title={pageTitle} description={siteSubtitle} top/>
+    <Layout main={mainPage}
+            socialImage={socialMediaCard.image}
+            side={side}
+            title={pageTitle}
+            description={siteSubtitle} top/>
   );
 };
 

@@ -1,14 +1,14 @@
-import * as React from 'react'
-import FacebookShareButton from 'react-share/es/FacebookShareButton'
-import FacebookIcon from 'react-share/es/FacebookIcon'
-import LinkedinShareButton from 'react-share/es/LinkedinShareButton'
-import LinkedinIcon from 'react-share/es/LinkedinIcon'
-import TwitterShareButton from 'react-share/es/TwitterShareButton'
-import TwitterIcon from 'react-share/es/TwitterIcon'
-import LineShareButton from 'react-share/es/LineShareButton'
-import LineIcon from 'react-share/es/LineIcon'
-import "twin.macro";
-import { useSiteMetadata } from "../../hooks";
+import * as React from 'react';
+import FacebookShareButton from 'react-share/es/FacebookShareButton';
+import FacebookIcon from 'react-share/es/FacebookIcon';
+import LinkedinShareButton from 'react-share/es/LinkedinShareButton';
+import LinkedinIcon from 'react-share/es/LinkedinIcon';
+import TwitterShareButton from 'react-share/es/TwitterShareButton';
+import TwitterIcon from 'react-share/es/TwitterIcon';
+import LineShareButton from 'react-share/es/LineShareButton';
+import LineIcon from 'react-share/es/LineIcon';
+import 'twin.macro';
+import { useSiteMetadata } from '../../hooks';
 
 export const ShareSns = ({ articleUrl, articleTitle }) => {
   const { author } = useSiteMetadata();
@@ -34,5 +34,4 @@ export const ShareSns = ({ articleUrl, articleTitle }) => {
         </div>
       </div>
   );
-}
-
+};

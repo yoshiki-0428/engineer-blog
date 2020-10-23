@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 import AdSense from 'react-adsense';
-import { useSiteSecretData } from "../../hooks/";
+import { useSiteSecretData } from '../../hooks';
 
 const Adsense = () => {
   const config = useSiteSecretData();

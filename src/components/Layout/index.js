@@ -1,23 +1,25 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import {useAllMarkdownRemarkForPopularList, useSiteMetadata, useCategoriesList} from '../../hooks';
-import tw from "twin.macro"
-import {Link} from "gatsby";
-import ImageWrap from "../Image/ImageWrap";
-import {SPACER, TEXT_GATSBY_LINK_H3} from "../Tailwind";
-import Header from "../Header";
+import tw from 'twin.macro';
+import { Link } from 'gatsby';
+import { useAllMarkdownRemarkForPopularList, useSiteMetadata, useCategoriesList } from '../../hooks';
+import ImageWrap from '../Image/ImageWrap';
+import { SPACER, TEXT_GATSBY_LINK_H3 } from '../Tailwind';
+import Header from '../Header';
 
 const Layout = ({
-    main,
-    side,
-    title,
-    description,
-    socialImage,
-    top = false
-  }) => {
-  const { author, copyright, topContents, headerImage } = useSiteMetadata();
+  main,
+  side,
+  title,
+  description,
+  socialImage,
+  top = false
+}) => {
+  const {
+    author, copyright, topContents, headerImage
+  } = useSiteMetadata();
   const categories = useCategoriesList();
-  const items = useAllMarkdownRemarkForPopularList(topContents.map(top => top.url));
+  const items = useAllMarkdownRemarkForPopularList(topContents.map((top) => top.url));
   const metaImage = socialImage != null ? socialImage : author.photo;
 
   const Div = tw.div`flex flex-col min-h-screen bg-base-back`;
@@ -68,7 +70,7 @@ const TopContents = ({ items }) => {
 
   return (
       <>
-        {items.slice(0, 3).map(item => (
+        {items.slice(0, 3).map((item) => (
             <TopContent key={item.slug}>
               <div tw="rounded-tr rounded-tl overflow-hidden bg-white">
                 <Link to={item.slug}>

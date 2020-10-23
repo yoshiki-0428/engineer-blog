@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby';
-import useAllMarkdownRemarkForPopularList from "./use-popular-article-list";
+import useAllMarkdownRemarkForPopularList from './use-popular-article-list';
 
 const usePopularList = () => {
   const { allIPopularPage } = useStaticQuery(
@@ -17,7 +17,7 @@ const usePopularList = () => {
     `
   );
 
-  const pathList = allIPopularPage.nodes.map(p => p.path);
+  const pathList = allIPopularPage.nodes.map((p) => p.path);
   return useAllMarkdownRemarkForPopularList(pathList);
 };
 

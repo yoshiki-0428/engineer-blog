@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import "twin.macro"
+import 'twin.macro';
 
-const Menu = ({ items }) => {
-  return (
+const Menu = ({ items }) => (
       <div tw="m-2">
         {items.map((item) => (
             <div key={item.path} tw="p-1 text-right text-base text-accent">
@@ -11,15 +10,14 @@ const Menu = ({ items }) => {
                       <a href={item.path}>
                         {item.label} >
                       </a>
-                  ) :
-                  <Link to={item.path}>
+              )
+                : <Link to={item.path}>
                     {item.label} >
                   </Link>
               }
             </div>
         ))}
       </div>
-  );
-};
+);
 
 export default Menu;
