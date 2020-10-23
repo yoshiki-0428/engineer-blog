@@ -1,21 +1,21 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Link } from 'gatsby';
-import tw from "twin.macro";
+import tw from 'twin.macro';
 import { kebabCase } from 'lodash/string';
-import { orderBy } from "lodash/collection";
-import SearchComponent from "../SearchBox";
-import { CENTER_PHOTO_NORMAL } from "../Tailwind";
+import { orderBy } from 'lodash/collection';
+import SearchComponent from '../SearchBox';
 
-export class Header extends Component {
+export default class Header extends Component {
   state = {
     active: false
   };
 
   handleMenuToggle = () => this.setState({ active: !this.state.active });
+
   handleLinkClick = () => this.state.active && this.handleMenuToggle();
 
   render() {
-    let {
+    const {
       headerImage,
       categories
     } = this.props;
@@ -38,15 +38,15 @@ export class Header extends Component {
         </Link>
     );
     const HamburgerMenu = () => (<div>
-        {!this.state.active &&
-          <SvgWrap tw="md:hidden block" onClick={this.handleMenuToggle}>
+        {!this.state.active
+          && <SvgWrap tw="md:hidden block" onClick={this.handleMenuToggle}>
             <Svg viewBox="0 0 24 24">
               <path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/>
             </Svg>
           </SvgWrap>
         }
-        {this.state.active &&
-          <div tw="md:hidden text-center pt-10 w-screen fixed inset-0 z-50 bg-white bg-opacity-75">
+        {this.state.active
+          && <div tw="md:hidden text-center pt-10 w-screen fixed inset-0 z-50 bg-white bg-opacity-75">
             <ul tw="flex items-center flex-col">
               <li tw="mr-6" onClick={this.handleLinkClick}>
                 <Svg tw="w-6 h-6 mr-64 cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -58,15 +58,15 @@ export class Header extends Component {
                 <Link
                     tw="block inline-block mt-8 text-xl text-base-font font-bold hover:text-primary uppercase"
                     onClick={this.handleLinkClick}
-                    to={`/`}>home
+                    to={'/'}>home
                 </Link>
               </li>
-              {sortTotalCount(categories).map(category => (
+              {sortTotalCount(categories).map((category) => (
                   <li key={category.fieldValue}>
                     <Link
                       tw="block inline-block mt-8 text-xl text-base-font font-bold hover:text-primary uppercase"
                       onClick={this.handleLinkClick}
-                      to={`category/${kebabCase(category.fieldValue)}`}>{category.fieldValue}
+                      to={`/category/${kebabCase(category.fieldValue)}`}>{category.fieldValue}
                   </Link></li>
               ))}
             </ul>
@@ -85,7 +85,7 @@ export class Header extends Component {
               <div/>
             </span>
           )}
-          {!headerImage && (<div tw={"mt-4"}/>)}
+          {!headerImage && (<div tw={'mt-4'}/>)}
 
           <Nav>
             <HomeButton/>
@@ -93,10 +93,10 @@ export class Header extends Component {
 
             <Content>
               <ContentInner>
-                {sortTotalCount(categories).map(category => (
+                {sortTotalCount(categories).map((category) => (
                     <Link
                         tw="block inline-block mt-1 mr-4 text-xl text-base-font font-bold hover:text-primary border-b-4 border-white hover:border-b-4 hover:border-primary uppercase"
-                        key={category.fieldValue} to={`category/${kebabCase(category.fieldValue)}`}>
+                        key={category.fieldValue} to={`/category/${kebabCase(category.fieldValue)}`}>
                       {category.fieldValue}
                     </Link>
                 ))}

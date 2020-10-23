@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import "twin.macro";
-import tw from "twin.macro"
-import ImageWrap from "../Image/ImageWrap";
-import {SPACER, TEXT_GATSBY_LINK_H3} from "../Tailwind";
+import tw from 'twin.macro';
+import ImageWrap from '../Image/ImageWrap';
+import { SPACER, TEXT_GATSBY_LINK_H3 } from '../Tailwind';
 
 const InstantView = ({ items, flex }) => {
   const Width = flex ? tw.div`w-1/2` : tw.div`w-full`;
@@ -13,7 +12,7 @@ const InstantView = ({ items, flex }) => {
       <Div>
         {items.map((item) => (
             <Width key={item.slug}>
-              <div tw="m-4 rounded overflow-hidden border border-base-gray-light bg-white">
+              <div tw="m-4 my-8 rounded overflow-hidden border border-base-gray-light bg-white">
                 <Link to={item.slug}>
                   <ImageWrap
                       item={{ socialImage: item.socialImage, alt: item.alt }}/>
@@ -25,7 +24,7 @@ const InstantView = ({ items, flex }) => {
             </Width>
         ))}
       </Div>
-  )
+  );
 };
 
 export default InstantView;
