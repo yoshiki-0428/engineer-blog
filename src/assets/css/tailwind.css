@@ -46,7 +46,7 @@ body {
 }
 .content p {
     @apply text-base-font;
-    @apply leading-7;
+    @apply leading-7 my-4;
 }
 .content .iframely-embed {
     @apply my-4;
