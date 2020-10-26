@@ -38,6 +38,7 @@ export const query = graphql`
         date
         socialImage
       }
+      excerpt(truncate: true)
       tableOfContents
     }
   }

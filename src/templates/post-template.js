@@ -44,7 +44,7 @@ export const query = graphql`
         socialImage
         category
       }
-      excerpt
+      excerpt(truncate: true)
       tableOfContents
     }
   }
