@@ -42,8 +42,12 @@ body {
     @apply relative;
     @apply p-3 my-6;
     @apply text-base-font bg-base-gray-light;
-    @apply border-l-4 border-solid border-base-gray;
+    @apply border-l-8 border-solid border-base-gray;
 }
+.content blockquote > p {
+    @apply my-0;
+}
+
 .content p {
     @apply text-base-font;
     @apply leading-7 my-4;
@@ -88,9 +92,13 @@ body {
 }
 .content ul {
     @apply text-base-font;
-    @apply p-3 mt-2 ml-2;
+    @apply ml-6;
     @apply list-disc;
 }
+.content li {
+    @apply my-2;
+}
+
 .content ol {
     @apply text-base-font;
     @apply p-3 mt-2 ml-2;
