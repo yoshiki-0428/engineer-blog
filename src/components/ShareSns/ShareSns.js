@@ -10,6 +10,7 @@ import LineIcon from 'react-share/es/LineIcon';
 import 'twin.macro';
 import Helmet from 'react-helmet';
 import { useSiteMetadata } from '../../hooks';
+import { TEXT_BASE_CENTER } from '../Tailwind';
 
 export const ShareSns = ({ articleUrl, articleTitle }) => {
   const { author } = useSiteMetadata();
@@ -21,6 +22,7 @@ export const ShareSns = ({ articleUrl, articleTitle }) => {
           <script type="text/javascript" src="//b.st-hatena.com/js/bookmark_button.js" charSet="utf-8" async="async"/>
         </Helmet>
 
+        <TEXT_BASE_CENTER>よろしければシェアをよろしくお願いします👋</TEXT_BASE_CENTER>
         <div tw="flex justify-center">
           <div tw="m-2">
             <a

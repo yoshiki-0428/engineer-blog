@@ -58,6 +58,7 @@ const Post = ({ post }) => {
       <ImageWrap item={{ socialImage }} size={'normal'} />
       <CARD top>
         <SPACER>
+          <ShareSns articleUrl={url + slug} articleTitle={title} />
           <div tw="my-4">
             <div className={'content'} dangerouslySetInnerHTML={{ __html: html }} />
           </div>
