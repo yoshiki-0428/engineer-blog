@@ -4,6 +4,7 @@ title: GatsbyにShare機能、OGPタグをつける
 slug: start-gatsby-blog-share
 draft: false
 date: 2020-05-25T14:46:03.023Z
+updatedDate: 2020-11-01T09:00:00.000Z
 category: Programming
 tags:
   - Gatsby
@@ -23,8 +24,6 @@ socialImage: https://ucarecdn.com/4f2366fa-cfd4-4e97-9d20-c08013970579/-/preview
 * [GatsbyにTableOfContents（目次）をつける](https://tech-blog.yoshikiohashi.dev/posts/start-gatsby-blog-tableofcontent)
 * [DarkModeをつける](https://tech-blog.yoshikiohashi.dev/posts/start-gatsby-blog-darkmode)
 
-# 内容
-
 今回はWordPressのシェアボタンなんかでよくあるSNSへのシェアボタンとOGP設定タグの付け方を解説していきます。
 
 ![](https://ucarecdn.com/448302fd-7d6b-4bf9-bb9e-ca78f105e256/)
@@ -35,16 +34,16 @@ socialImage: https://ucarecdn.com/4f2366fa-cfd4-4e97-9d20-c08013970579/-/preview
 
 > OGP設定タグ
 
-## SNSシェアボタンを実装する
+# SNSシェアボタンを実装する
 
-### react-shareのインストール
+## react-shareのインストール
 
 めっちゃ簡単です。まずライブラリをインストール。
 ```
 yarn add react-share
 ```
 
-### ShareSns.jsのコンポーネントの作成
+## ShareSns.jsのコンポーネントの作成
 
 適当なディレクトリを作成して（ここでは**ShareSns**とします）
 
@@ -72,7 +71,43 @@ export const ShareSns = ({ articleUrl, articleTitle }) => (
 );
 ```
 
-### 呼び出し方
+## はてなブログアイコンの追加方法
+
+最近はてなブログのアイコンを追加したのでやり方を載せておきます。
+
+外部のJavaScriptファイルを読み込む必要があるため**react-helmet**が必要になります。
+
+```javascript
+<Helmet>
+  <script type="text/javascript" src="//b.st-hatena.com/js/bookmark_button.js" charSet="utf-8" async="async"/>
+</Helmet>
+
+<a
+  aria-label="share_hatena-bookmark"
+  href="http://b.hatena.ne.jp/entry/"
+  className="hatena-bookmark-button"
+  data-hatena-bookmark-layout="touch-counter"
+  title="このエントリーをはてなブックマークに追加"
+  style={{ boxShadow: 'none' }}
+>
+  <img
+    src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+    alt="このエントリーをはてなブックマークに追加"
+    width="24"
+    height="24"
+    style={{ border: 'none' }}
+  />
+</a>
+```
+
+サイズなどはCSSで適宜対応してください。
+
+表示されるとこんな感じになります。
+
+![](https://img.esa.io/uploads/production/attachments/15569/2020/11/01/84487/ce924a6b-df3a-4ff4-916d-7abb45d96c7e.png)
+
+
+## 呼び出し方
 
 ちょっと呼び出し方がもどかしいですが、Gatsby buildをするときに**window.location.href**が未定義なのでビルド時に落ちてしまいます。そのため、typeofで確認する必要があります。
 
@@ -92,16 +127,16 @@ const windowUrl = (typeof window !== 'undefined' && window.location.href) ? wind
 
 ![](https://ucarecdn.com/448302fd-7d6b-4bf9-bb9e-ca78f105e256/)
 
-## OGP設定タグ
+# OGP設定タグ
 
-### react-helmetのインストール
+## react-helmetのインストール
 
 大抵のTemplateには入っているのでやらなくても良いかもです。
 ```
 yarn add react-helmet
 ```
 
-### Metaタグ専用のコンポーネントの作成
+## Metaタグ専用のコンポーネントの作成
 
 使い方は簡単です。**Helmetタグ**を作成し、そこに必要な**Metaタグ**を入力すればOKです。
 
@@ -120,7 +155,7 @@ yarn add react-helmet
 </Helmet>
 ```
 
-### OGPタグの設定確認
+## OGPタグの設定確認
 
 netlifyにアップロードしたら[Twitterのカード情報が確認できるサイト](https://ogp.buta3.net/)で対象のURLを入力して確認してみましょう。設定できていればOKです。Slackのチャットなんかにも投稿しても確認できます。
 
