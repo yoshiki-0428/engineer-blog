@@ -25,7 +25,7 @@ jobs:
           yarn run build
       - name: run Lighthouse CI
         run: |
-          yarn global add @lhci/cli@0.3.x
+          npm install -g @lhci/cli@0.3.x
           lhci autorun --upload.target=temporary-public-storage --staticDistDir=./public || echo "LHCI failed!"
 
       - name: Set COMMIT_MESSAGE
