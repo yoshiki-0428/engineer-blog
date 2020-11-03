@@ -16,16 +16,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: npm install, build
+      - name: yarn install, build
         env:
           ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
           GA_CRED: ${{ secrets.GA_CRED }}
         run: |
-          npm install
-          npm run build
+          yarn install
+          yarn run build
       - name: run Lighthouse CI
         run: |
-          npm install -g @lhci/cli@0.3.x
+          yarn install -g @lhci/cli@0.3.x
           lhci autorun --upload.target=temporary-public-storage --staticDistDir=./public || echo "LHCI failed!"
 
       - name: Set COMMIT_MESSAGE
