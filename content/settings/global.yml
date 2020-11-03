@@ -1,11 +1,11 @@
 siteConfig:
   disqusShortname: "tech-blog-yoshikiohashi"
   socialMediaCard:
-    image: https://ucarecdn.com/37bf29a4-dcb3-456b-afc0-f34d138c3f77/
+    image: https://ucarecdn.com/37bf29a4-dcb3-456b-afc0-f34d138c3f77/-/resize/400x/
   copyright: © 2020 Yoshiki Ohashi All rights reserved.
   author:
     name: Yoshiki Ohashi
-    photo: /media/icon.jpg
+    photo: https://ucarecdn.com/82eeaf82-f79d-4a41-9963-a619310ad097/-/resize/400x/
     bio: 2x歳の個人事業主エンジニア。SI企業1年, Webベンチャー企業2年で上流から下流の経験を経て独立。
       エンジニアらしく性格は温和。プロジェクトチームに心理的安全性を求める。go gin | Spring | Java | Kotlin | Vue |
       Python | 筋トレ | キャンプ | 個人開発 | 新潟出身

@@ -19,7 +19,7 @@ export const ShareSns = ({ articleUrl, articleTitle }) => {
   return (
       <div>
         <Helmet>
-          <script type="text/javascript" src="//b.st-hatena.com/js/bookmark_button.js" charSet="utf-8" async="async"/>
+          <script type="text/javascript" src="//b.st-hatena.com/js/bookmark_button.js" async/>
         </Helmet>
 
         <TEXT_BASE_CENTER>よろしければシェアをよろしくお願いします👋</TEXT_BASE_CENTER>

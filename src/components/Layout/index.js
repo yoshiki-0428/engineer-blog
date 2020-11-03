@@ -48,11 +48,21 @@ const Layout = ({
       <Helmet>
         <html lang="ja" />
         <title>{title}</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css"
+
+        <link rel="preconnect dns-prefetch" href="https://ucarecdn.com" crossOrigin/>
+        <link rel="preconnect dns-prefetch" href="https://ad.doubleclick.net" />
+        <link rel="preconnect dns-prefetch" href="https://googleads.g.doubleclick.net" />
+        <link rel="preconnect dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="preconnect dns-prefetch" href="https://www.googletagservices.com" />
+        <link rel="preconnect dns-prefetch" href="https://tpc.googlesyndication.com" />
+        <link rel="preconnect dns-prefetch" href="https://www.google.com" />
+        <link rel="preconnect dns-prefetch" href="https://tpc.googlesyndication.com" />
+        <link rel="preconnect dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        <link rel="preconnect dns-prefetch" href="https://b.st-hatena.com" />
+
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css"
               integrity="sha256-t2ATOGCtAIZNnzER679jwcFcKYfLlw01gli6F6oszk8=" crossOrigin="anonymous"/>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"/>
-        <link href="https://ucarecdn.com" rel="preconnect" crossOrigin/>
-        <link rel="dns-prefetch" href="https://ucarecdn.com"/>
 
         <meta name="description" content={description} />
         <meta property="og:site_name" content={siteTitle} />
