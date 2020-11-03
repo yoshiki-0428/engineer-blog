@@ -1,6 +1,6 @@
 import React from 'react';
 import Disqus from 'gatsby-plugin-disqus';
-import moment from 'moment';
+import { format } from 'date-fns';
 import { kebabCase } from 'lodash/string';
 import Tags from '../Tags';
 import { ShareSns } from '../ShareSns/ShareSns';
@@ -12,12 +12,13 @@ import {
 } from '../Tailwind';
 import 'twin.macro';
 import Iframely from '../Iframely';
+import { YYYY_MM_DD } from '../../constants/dateFormat';
 
 const Post = ({ post }) => {
   const { id, html } = post;
   const { slug } = post.fields;
   const {
-    title, date, updatedDate, socialImage, category, tags
+    title, socialImage, category, tags
   } = post.frontmatter;
   const group = useTagsList();
   // Tag Listから自分以外のタグで関連するURLを抽出
@@ -31,6 +32,10 @@ const Post = ({ post }) => {
     : [];
 
   const convertTags = tags.map((tag) => ({ fieldValue: tag }));
+  const date = format(new Date(post.frontmatter.date), YYYY_MM_DD);
+  const updatedDate = post.frontmatter.updatedDate
+    ? format(new Date(post.frontmatter.updatedDate), YYYY_MM_DD)
+    : null;
 
   return (
     <div>
@@ -38,21 +43,21 @@ const Post = ({ post }) => {
       <CARD mb>
         <SPACER>
           <TEXT_BASE_CENTER>
-            <time dateTime={moment(date).format('YYYY/MM/DD')}>
-              {moment(date).format('YYYY/MM/DD')}
+            <time dateTime={date}>
+              {date}
             </time>
             {updatedDate && (
-                <> (更新日:
-                  <time dateTime={moment(updatedDate).format('YYYY/MM/DD')}>
-                    {moment(updatedDate).format('YYYY/MM/DD')}
-                  </time>
+                <>(更新日:
+                    <time dateTime={updatedDate}>
+                      {updatedDate}
+                    </time>
                   )
                 </>
             )}
           </TEXT_BASE_CENTER>
 
           <TITLE_H1>{title}</TITLE_H1>
-          <TEXT_GATSBY_LINK to={`category/${kebabCase(category)}`}>{category}</TEXT_GATSBY_LINK>
+          <TEXT_GATSBY_LINK to={`/category/${kebabCase(category)}`}>{category}</TEXT_GATSBY_LINK>
         </SPACER>
       </CARD>
       <ImageWrap item={{ socialImage }} size={'normal'} />
