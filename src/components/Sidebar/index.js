@@ -60,7 +60,6 @@ const SideBar = ({ toc }) => {
             </CARD>
           </div>
       )}
-      <Adsense/>
     </div>
   );
 };

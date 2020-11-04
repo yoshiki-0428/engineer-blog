@@ -4,9 +4,9 @@ import { format } from 'date-fns';
 import Tags from '../Tags';
 import ImageWrap from '../Image/ImageWrap';
 import {
-  BUTTON_CENTER, CARD,
-  SPACER,
-  TEXT_BASE_CENTER,
+  CARD,
+  SPACER, SPACER_MINI,
+  TEXT_BASE_CENTER, TEXT_BASE_CENTER_LINK,
   TEXT_GATSBY_LINK,
   TEXT_GATSBY_LINK_H1,
 } from '../Tailwind';
@@ -46,10 +46,11 @@ const Feed = ({ edges }) => (
                     item={{ socialImage: edge.node.frontmatter.socialImage }} />
               </Link>
               <SPACER>
-                <TEXT_BASE_CENTER>{edge.node.excerpt}</TEXT_BASE_CENTER>
-                <BUTTON_CENTER to={edge.node.fields.slug}>READ MORE</BUTTON_CENTER>
-                <Tags tags={edge.node.frontmatter.tags.map((t) => ({ fieldValue: t }))} urlPrefix={'tags'}/>
+                <TEXT_BASE_CENTER_LINK>{edge.node.excerpt}</TEXT_BASE_CENTER_LINK>
               </SPACER>
+              <SPACER_MINI>
+                <Tags tags={edge.node.frontmatter.tags.map((t) => ({ fieldValue: t }))} urlPrefix={'tags'}/>
+              </SPACER_MINI>
             </CARD>
         ))}
       </div>

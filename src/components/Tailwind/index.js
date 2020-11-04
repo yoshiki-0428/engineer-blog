@@ -14,6 +14,9 @@ export const TEXT_GATSBY_LINK_H3 = ({ to, children }) => <div tw="text-center">
 </div>;
 export const TEXT_BASE = tw.div`text-base-font text-base`;
 export const TEXT_BASE_CENTER = tw.div`text-base-font text-base text-center`;
+export const TEXT_BASE_CENTER_LINK = ({ to, children }) => <div tw="text-base-font text-base text-center cursor-pointer">
+  <Link tw="text-base" to={to}>{children}</Link>
+</div>;
 export const TEXT_GATSBY_LINK = ({ to, children }) => <div tw="text-center">
   <Link tw="text-base text-accent hover:underline" to={to}>{children}</Link>
 </div>;

@@ -1,6 +1,4 @@
-'use strict';
-
-const _ = require('lodash');
+const { kebabCase } = require('lodash/string');
 const path = require('path');
 const config = require('../../../loadYaml.js');
 
@@ -21,9 +19,9 @@ module.exports = async (graphql, actions) => {
     }
   `);
 
-  _.each(result.data.allMarkdownRemark.group, (tag) => {
+  result.data.allMarkdownRemark.group.forEach((tag) => {
     const numPages = Math.ceil(tag.totalCount / postsPerPage);
-    const tagSlug = `/tags/${_.kebabCase(tag.fieldValue)}`;
+    const tagSlug = `/tags/${kebabCase(tag.fieldValue)}`;
 
     for (let i = 0; i < numPages; i += 1) {
       createPage({

@@ -1,8 +1,7 @@
-const _ = require('lodash');
-const path = require('path');
-const config = require('../../../loadYaml.js');
-
 module.exports = async (graphql, actions) => {
+  const { kebabCase } = require('lodash/string');
+  const config = require('../../../loadYaml.js');
+  const path = require('path');
   const { createPage } = actions;
   const { postsPerPage } = config.siteConfig;
 
@@ -19,9 +18,9 @@ module.exports = async (graphql, actions) => {
     }
   `);
 
-  _.each(result.data.allMarkdownRemark.group, (category) => {
+  result.data.allMarkdownRemark.group.forEach((category) => {
     const numPages = Math.ceil(category.totalCount / postsPerPage);
-    const categorySlug = `/category/${_.kebabCase(category.fieldValue)}`;
+    const categorySlug = `/category/${kebabCase(category.fieldValue)}`;
 
     for (let i = 0; i < numPages; i += 1) {
       createPage({

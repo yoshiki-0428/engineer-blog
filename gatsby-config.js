@@ -1,9 +1,8 @@
+const resolveConfig = require('tailwindcss/resolveConfig');
 const postCssPlugins = require('./postcss-config.js');
 
-const resolveConfig = require("tailwindcss/resolveConfig");
-const tailwindConfig = require("./tailwind.config.js");
-const config = require("./loadYaml.js");
-const fullConfig = resolveConfig(tailwindConfig);
+const tailwindConfig = require('./tailwind.config.js');
+const config = require('./loadYaml.js');
 
 module.exports = {
   pathPrefix: config.siteConfig.pathPrefix,
@@ -105,16 +104,16 @@ module.exports = {
       }
     },
     {
-      resolve: "gatsby-plugin-robots-txt",
+      resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: config.siteConfig.url,
-        sitemap: config.siteConfig.url + "/sitemap.xml",
+        sitemap: `${config.siteConfig.url}/sitemap.xml`,
         env: {
           development: {
-            policy: [{ userAgent: "*", disallow: ["/"] }],
+            policy: [{ userAgent: '*', disallow: ['/'] }],
           },
           production: {
-            policy: [{ userAgent: "*", allow: "/" }],
+            policy: [{ userAgent: '*', allow: '/' }],
           },
         },
       },
@@ -132,8 +131,8 @@ module.exports = {
               ignoreFileExtensions: [],
             }
           },
-          "gatsby-remark-embed-youtube",
-          "gatsby-plugin-twitter",
+          'gatsby-remark-embed-youtube',
+          'gatsby-plugin-twitter',
           {
             resolve: 'gatsby-remark-responsive-iframe',
             options: { wrapperStyle: 'margin-bottom: 1.0725rem' }
@@ -165,14 +164,14 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-algolia`,
+      resolve: 'gatsby-plugin-algolia',
       options: {
         appId: config.secretConfig.algoliaAppId,
         apiKey: process.env['ALGOLIA_ADMIN_KEY'],
         indexName: config.secretConfig.algoliaIndexName,
         queries: [
-            {
-              query: `{
+          {
+            query: `{
                 allMarkdownRemark(
                   limit: 1000,
                   sort: { order: DESC, fields: [frontmatter___date] },
@@ -197,27 +196,24 @@ module.exports = {
                   }
                 }
               }`,
-              transformer: ({ data }) =>
-                data.allMarkdownRemark.edges.flatMap(({ node }) => {
-                  return {
-                    id: node.fields.slug,
-                    title: node.frontmatter.title,
-                    date: new Date(node.frontmatter.date),
-                    template: node.fields.template,
-                    category: node.fields.category,
-                    socialImage: node.fields.socialImage,
-                    tags: node.fields.tags,
-                    excerpt: node.excerpt,
-                    rawMarkdownBody: node.rawMarkdownBody,
-                  }
-                }),
-            },
+            transformer: ({ data }) => data.allMarkdownRemark.edges.flatMap(({ node }) => ({
+              id: node.fields.slug,
+              title: node.frontmatter.title,
+              date: new Date(node.frontmatter.date),
+              template: node.fields.template,
+              category: node.fields.category,
+              socialImage: node.fields.socialImage,
+              tags: node.fields.tags,
+              excerpt: node.excerpt,
+              rawMarkdownBody: node.rawMarkdownBody,
+            })),
+          },
         ],
         chunkSize: 10000,
       }
     },
     {
-      resolve: `gatsby-plugin-disqus`,
+      resolve: 'gatsby-plugin-disqus',
       options: {
         shortname: config.siteConfig.disqusShortname
       }
@@ -267,6 +263,7 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     'gatsby-plugin-catch-links',
+    'gatsby-plugin-lodash',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-sass',
@@ -278,14 +275,14 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-postcss`,
+      resolve: 'gatsby-plugin-postcss',
       options: {
         postCssPlugins: [
-          require(`tailwindcss`)(tailwindConfig),
-          require(`autoprefixer`),
-          ...(process.env.NODE_ENV === `production`
-              ? [require(`cssnano`)]
-              : []),
+          require('tailwindcss')(tailwindConfig),
+          require('autoprefixer'),
+          ...(process.env.NODE_ENV === 'production'
+            ? [require('cssnano')]
+            : []),
         ],
       },
     },
