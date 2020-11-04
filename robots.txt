@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://tech-blog.yoshikiohashi.dev/sitemap.xml
+Host: https://tech-blog.yoshikiohashi.dev
