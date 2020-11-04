@@ -46,7 +46,9 @@ const Feed = ({ edges }) => (
                     item={{ socialImage: edge.node.frontmatter.socialImage }} />
               </Link>
               <SPACER>
-                <TEXT_BASE_CENTER_LINK>{edge.node.excerpt}</TEXT_BASE_CENTER_LINK>
+                <TEXT_BASE_CENTER_LINK to={edge.node.fields.slug}>
+                  {edge.node.excerpt}
+                </TEXT_BASE_CENTER_LINK>
               </SPACER>
               <SPACER_MINI>
                 <Tags tags={edge.node.frontmatter.tags.map((t) => ({ fieldValue: t }))} urlPrefix={'tags'}/>
