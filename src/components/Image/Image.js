@@ -39,7 +39,7 @@ class Image extends React.Component {
   getResolutionString(res) {
     /* add resolutions options for inline images */
     if (res === 'small') {
-      res = '300x';
+      res = '700x';
     } else if (res === 'medium') {
       res = '1000x';
     } else if (res === 'large') {
