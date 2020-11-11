@@ -1,5 +1,5 @@
 siteConfig:
-  disqusShortname: "tech-blog-yoshikiohashi"
+  disqusShortname: tech-blog-yoshikiohashi
   socialMediaCard:
     image: https://ucarecdn.com/37bf29a4-dcb3-456b-afc0-f34d138c3f77/-/resize/200x/
   copyright: © 2020 Yoshiki Ohashi All rights reserved.
@@ -16,9 +16,9 @@ siteConfig:
       soundcloud: ""
       facebook: yoshiki.ohashi0428
       weibo: ""
+      feedly: https://feedly.com/i/discover/sources/search/feed/https%3A%2F%2Ftech-blog.yoshikiohashi.dev%2F
       codepen: ""
       rss: /rss.xml
-      feedly: https://feedly.com/i/discover/sources/search/feed/https%3A%2F%2Ftech-blog.yoshikiohashi.dev%2F
       instagram: ""
       twitter: yoshiki__0428
       line: ""
@@ -37,7 +37,7 @@ siteConfig:
   title: Blog by yoshikiohashi
   postsPerPage: 15
   popularView:
-    googleAnalyticsStartDate: 60daysAgo
+    googleAnalyticsStartDate: 7daysAgo
     googleAnalyticsEndDate: today
     googleAnalyticsMetrics: ga:pageviews
     googleAnalyticsFiltersUrl: /posts
